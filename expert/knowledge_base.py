@@ -116,6 +116,99 @@ RULE_TARGETS = [
     "inflammation_anemia",
 ]
 
+PHYSICIAN_PANELS = {
+    "iron_deficiency": {
+        "key_markers": [
+            "serum_iron",
+            "ferritin",
+            "transferrin",
+            "TIBC",
+        ],
+        "supporting_markers": [
+            "TSAT",
+            "sTfR",
+            "Ret_He",
+        ],
+        "expert_note": (
+            "Ключевые показатели для оценки дефицита железа: "
+            "сывороточное железо, ферритин, трансферрин и ОЖСС."
+        ),
+    },
+
+    "B12_deficiency": {
+        "key_markers": [
+            "vitamin_B12",
+            "MMA",
+        ],
+        "supporting_markers": [
+            "active_B12",
+            "homocysteine",
+        ],
+        "expert_note": (
+            "Ключевые показатели для оценки B12-дефицита: "
+            "витамин B12 и метилмалоновая кислота."
+        ),
+    },
+
+    "folate_deficiency": {
+        "key_markers": [
+            "folate",
+        ],
+        "supporting_markers": [
+            "homocysteine",
+        ],
+        "expert_note": (
+            "Ключевой показатель для оценки фолатного дефицита — folate."
+        ),
+    },
+
+    "B6_deficiency": {
+        "key_markers": [
+            "vitamin_B6",
+            "MCV",
+        ],
+        "supporting_markers": [],
+        "expert_note": (
+            "Ключевые показатели для оценки B6-дефицита: "
+            "витамин B6 и MCV."
+        ),
+    },
+
+    "copper_deficiency": {
+        "key_markers": [
+            "copper",
+            "ceruloplasmin",
+        ],
+        "supporting_markers": [
+            "vitamin_B12",
+            "folate",
+            "ferritin",
+        ],
+        "expert_note": (
+            "Ключевые показатели для оценки дефицита меди: "
+            "copper и ceruloplasmin. Дополнительно необходимо "
+            "учитывать альтернативные дефицитные состояния."
+        ),
+    },
+
+    "inflammation_anemia": {
+        "key_markers": [
+            "CRP",
+            "ESR",
+        ],
+        "supporting_markers": [
+            "ferritin",
+            "serum_iron",
+            "TIBC",
+            "eGFR",
+        ],
+        "expert_note": (
+            "Основные маркеры воспалительного контекста: CRP и ESR. "
+            "Для оценки почечного контекста используется eGFR."
+        ),
+    },
+}
+
 STRONG_RULE = 0.75
 WEAK_RULE = 0.25
 HIGH_ML_PROBABILITY = 0.75
@@ -142,6 +235,92 @@ def anemia_rule(row: pd.Series) -> int:
         return int(hb < CLINICAL["hemoglobin_male_anemia"]["value"])
 
     return 0
+
+
+def assess_hypothesis_completeness(
+    row: pd.Series,
+    target: str,
+) -> Dict[str, Any]:
+    """
+    Оценивает, достаточно ли ключевых данных
+    для проверки конкретной гипотезы.
+    """
+
+    panel = PHYSICIAN_PANELS.get(target)
+
+    if panel is None:
+        return {
+            "target": target,
+            "status": "unknown",
+            "complete": False,
+            "available_key_markers": [],
+            "missing_key_markers": [],
+            "available_supporting_markers": [],
+            "missing_supporting_markers": [],
+        }
+
+    key_markers = panel["key_markers"]
+    supporting_markers = panel["supporting_markers"]
+
+    available_key = [
+        feature
+        for feature in key_markers
+        if feature in row.index and _present(row.get(feature))
+    ]
+
+    missing_key = [
+        feature
+        for feature in key_markers
+        if feature not in row.index or not _present(row.get(feature))
+    ]
+
+    available_supporting = [
+        feature
+        for feature in supporting_markers
+        if feature in row.index and _present(row.get(feature))
+    ]
+
+    missing_supporting = [
+        feature
+        for feature in supporting_markers
+        if feature not in row.index or not _present(row.get(feature))
+    ]
+
+    if len(missing_key) == 0:
+        status = "complete"
+        complete = True
+
+    elif len(available_key) == 0:
+        status = "insufficient"
+        complete = False
+
+    else:
+        status = "partial"
+        complete = False
+
+    return {
+        "target": target,
+        "status": status,
+        "complete": complete,
+        "available_key_markers": available_key,
+        "missing_key_markers": missing_key,
+        "available_supporting_markers": available_supporting,
+        "missing_supporting_markers": missing_supporting,
+        "expert_note": panel["expert_note"],
+    }
+
+
+def assess_all_hypotheses(
+    row: pd.Series,
+) -> Dict[str, Dict[str, Any]]:
+    """
+    Оценивает полноту данных по всем гипотезам.
+    """
+
+    return {
+        target: assess_hypothesis_completeness(row, target)
+        for target in RULE_TARGETS
+    }
 
 
 def weighted_evidence(conditions) -> float:

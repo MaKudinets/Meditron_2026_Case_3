@@ -1,100 +1,136 @@
 from __future__ import annotations
 
-from typing import Dict, List
-import numpy as np
+from typing import Dict, List, Any
 import pandas as pd
 
-
-RECOMMENDATION_PLAN = {
-    "iron_deficiency": [
-        ("ferritin", "Уточнение железодефицитного профиля."),
-        ("TSAT", "Уточнение железодефицитного профиля."),
-        ("Ret_He", "Уточнение железодефицитного эритропоэза."),
-        ("sTfR", "Уточнение железодефицита при неоднозначном профиле."),
-    ],
-    "B12_deficiency": [
-        ("vitamin_B12", "Уточнение B12-дефицита."),
-        ("active_B12", "Уточнение функционального B12-статуса."),
-        ("MMA", "Уточнение функционального B12-дефицита."),
-        ("homocysteine", "Уточнение B12-дефицита при неполных данных."),
-    ],
-    "folate_deficiency": [
-        ("folate", "Уточнение фолатного статуса."),
-        ("homocysteine", "Уточнение фолатного статуса."),
-    ],
-    "B6_deficiency": [
-        ("vitamin_B6", "Уточнение обеспеченности витамином B6."),
-    ],
-    "copper_deficiency": [
-        ("copper", "Уточнение обмена меди."),
-        ("ceruloplasmin", "Уточнение обмена меди."),
-    ],
-    "inflammation_anemia": [
-        ("CRP", "Уточнение воспалительного контекста."),
-        ("ferritin", "Уточнение железного профиля при воспалении."),
-        ("serum_iron", "Уточнение железного профиля при воспалении."),
-        ("TIBC", "Уточнение железного профиля при воспалении."),
-        ("TSAT", "Уточнение железного профиля при воспалении."),
-        ("sTfR", "Дифференциация абсолютного дефицита и воспалительного профиля."),
-    ],
-}
+from expert.knowledge_base import (
+    PHYSICIAN_PANELS,
+    assess_hypothesis_completeness,
+)
 
 
-def _missing(row: pd.Series, feature: str) -> bool:
-    return feature not in row.index or pd.isna(row.get(feature, np.nan))
+def recommended_next_tests(
+    row: pd.Series,
+    probabilities: Dict[str, float],
+    probability_threshold: float = 0.50,
+) -> List[Dict[str, str]]:
+    """
+    Формирует рекомендации по дополнительным исследованиям.
+
+    Принципы:
+    - missing != normal;
+    - рекомендации появляются только при достаточно вероятной ML-гипотезе;
+    - сначала рекомендуются отсутствующие ключевые показатели врача;
+    - затем полезные supporting markers;
+    - это рекомендации по уточнению диагностики, а не лечение.
+    """
+
+    suggestions: List[Dict[str, str]] = []
+
+    def add_if_missing(
+        feature: str,
+        target: str,
+        priority: str,
+        reason: str,
+    ) -> None:
+        if feature not in row.index or pd.isna(row.get(feature)):
+            suggestions.append({
+                "test": feature,
+                "target": target,
+                "priority": priority,
+                "reason": reason,
+            })
+
+    for target, panel in PHYSICIAN_PANELS.items():
+
+        probability = float(probabilities.get(target, 0.0))
+
+        if probability < probability_threshold:
+            continue
+
+        completeness = assess_hypothesis_completeness(
+            row=row,
+            target=target,
+        )
+
+        # 1. Ключевые показатели врача
+        for feature in completeness["missing_key_markers"]:
+            add_if_missing(
+                feature=feature,
+                target=target,
+                priority="key",
+                reason=(
+                    f"Отсутствует ключевой показатель для полной "
+                    f"проверки гипотезы {target}. "
+                    f"По доступным данным гипотеза требует уточнения."
+                ),
+            )
+
+        # 2. Supporting markers
+        for feature in completeness["missing_supporting_markers"]:
+            add_if_missing(
+                feature=feature,
+                target=target,
+                priority="supporting",
+                reason=(
+                    f"Дополнительный показатель может помочь "
+                    f"уточнить гипотезу {target}."
+                ),
+            )
+
+    return suggestions
 
 
 def build_recommendation_events(
     run_id: str,
     row: pd.Series,
     probabilities: Dict[str, float],
-):
+    probability_threshold: float = 0.50,
+) -> List[Dict[str, Any]]:
     """
-    Build candidates. Durable Rules decides whether they fire.
-    Missing test alone is NOT enough: the ML probability must also
-    meet the rule-engine trigger.
+    Формирует события для Durable Rules engine.
+
+    recommended_next_tests() определяет,
+    какие отсутствующие исследования стоит рекомендовать.
+
+    Здесь мы добавляем технические поля,
+    необходимые Durable Rules:
+    - run_id
+    - kind
+    - missing
+    - probability
     """
-    events = []
 
-    for target, tests in RECOMMENDATION_PLAN.items():
-        probability = float(probabilities.get(target, 0.0))
+    recommendations = recommended_next_tests(
+        row=row,
+        probabilities=probabilities,
+        probability_threshold=probability_threshold,
+    )
 
-        for test, reason in tests:
-            events.append({
-                "kind": "recommendation",
-                "run_id": run_id,
-                "target": target,
-                "test": test,
-                "reason": reason,
-                "missing": bool(_missing(row, test)),
-                "probability": probability,
-            })
+    events: List[Dict[str, Any]] = []
+
+    for recommendation in recommendations:
+
+        target = recommendation["target"]
+
+        events.append({
+            "run_id": run_id,
+            "kind": "recommendation",
+
+            "test": recommendation["test"],
+            "target": target,
+
+            "reason": recommendation["reason"],
+            "priority": recommendation.get(
+                "priority",
+                "supporting",
+            ),
+
+            # Эти два поля нужны Durable Rules.
+            "missing": True,
+            "probability": float(
+                probabilities.get(target, 0.0)
+            ),
+        })
 
     return events
-
-
-def recommended_next_tests(
-    row: pd.Series,
-    probabilities: Dict[str, float],
-    *,
-    probability_threshold: float = 0.50,
-) -> List[Dict[str, str]]:
-    """
-    Pure-Python compatibility helper used by old notebooks.
-    Production expert inference uses Durable Rules in engine.py.
-    """
-    suggestions = []
-
-    for target, tests in RECOMMENDATION_PLAN.items():
-        if float(probabilities.get(target, 0.0)) < probability_threshold:
-            continue
-
-        for test, reason in tests:
-            if _missing(row, test):
-                suggestions.append({
-                    "test": test,
-                    "target": target,
-                    "reason": reason,
-                })
-
-    return suggestions
