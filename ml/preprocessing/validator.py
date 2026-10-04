@@ -1,384 +1,143 @@
-"""
-Валидация входных данных для модели Meditron.
+from __future__ import annotations
 
-Модуль отвечает за проверку данных ДО передачи их в модель:
-
-1. проверяет тип входных данных;
-2. проверяет наличие всех признаков модели;
-3. не допускает передачу идентификаторов пациента;
-4. проверяет значения категориальных признаков;
-5. проверяет числовой формат лабораторных показателей;
-6. обнаруживает пропуски;
-7. обнаруживает бесконечные значения;
-8. хранит официальные единицы измерения признаков.
-
-Названия признаков и единицы измерения взяты из variables.xlsx.
-
-Важно:
-медицинские референсные диапазоны в variables.xlsx не заданы,
-поэтому validator не пытается определять, является ли конкретное
-лабораторное значение клинически нормальным или патологическим.
-"""
-
-from typing import Any
+from dataclasses import dataclass, asdict
+from pathlib import Path
+from typing import Any, Mapping
+import json
 
 import numpy as np
 import pandas as pd
 
-from ml.preprocessing.features import (
-    FEATURE_COLUMNS,
-    ID_COLUMNS,
-)
+
+@dataclass
+class ValidationReport:
+    n_rows: int
+    n_expected_features: int
+    used_features: list[str]
+    missing_features: list[str]
+    unknown_features: list[str]
+    coverage: float
+    warnings: list[str]
+    errors: list[str]
+
+    @property
+    def ok(self) -> bool:
+        return not self.errors
+
+    def to_dict(self) -> dict[str, Any]:
+        result = asdict(self)
+        result["ok"] = self.ok
+        return result
 
 
-# ============================================================
-# ЕДИНИЦЫ ИЗМЕРЕНИЯ
-# ============================================================
+def load_feature_contract(contract: Mapping[str, Any] | str | Path) -> dict[str, Any]:
+    if isinstance(contract, Mapping):
+        return dict(contract)
 
-# Официальные единицы измерения входных признаков.
-#
-# Используются как единый источник информации об ожидаемых
-# единицах при работе API, frontend и импорта файлов.
-#
-# Для age_years и sex лабораторная единица не требуется,
-# но сохраняем обозначения из variables.xlsx.
-
-FEATURE_UNITS = {
-    "age_years": "years",
-    "sex": None,
-    "hemoglobin": "g/L",
-    "RBC": "10^12/L",
-    "hematocrit": "%",
-    "MCV": "fL",
-    "MCH": "pg",
-    "MCHC": "g/L",
-    "RDW": "%",
-    "platelets": "10^9/L",
-    "WBC": "10^9/L",
-    "reticulocytes": "%",
-    "ferritin": "µg/L",
-    "serum_iron": "µmol/L",
-    "transferrin": "g/L",
-    "TIBC": "µmol/L",
-    "UIBC": "µmol/L",
-    "TSAT": "%",
-    "sTfR": "mg/L",
-    "Ret_He": "pg",
-    "vitamin_B12": "pg/mL",
-    "active_B12": "pmol/L",
-    "MMA": "µmol/L",
-    "homocysteine": "µmol/L",
-    "folate": "ng/mL",
-    "vitamin_B6": "nmol/L",
-    "copper": "µmol/L",
-    "ceruloplasmin": "g/L",
-    "CRP": "mg/L",
-    "ESR": "mm/h",
-    "creatinine": "µmol/L",
-    "eGFR": "mL/min/1.73m²",
-    "TSH": "mIU/L",
-    "albumin": "g/L",
-    "LDH": "U/L",
-    "indirect_bilirubin": "µmol/L",
-    "haptoglobin": "g/L",
-}
+    path = Path(contract)
+    with path.open("r", encoding="utf-8") as f:
+        return json.load(f)
 
 
-# ============================================================
-# ДОПУСТИМЫЕ КАТЕГОРИАЛЬНЫЕ ЗНАЧЕНИЯ
-# ============================================================
+def _to_frame(data: Mapping[str, Any] | pd.DataFrame) -> pd.DataFrame:
+    if isinstance(data, pd.DataFrame):
+        return data.copy()
 
-# В features.py значение sex приводится:
-#
-#   .str.strip()
-#   .str.lower()
-#
-# Поэтому здесь используем нормализованный формат.
-ALLOWED_SEX_VALUES = {"f", "m"}
+    if isinstance(data, Mapping):
+        return pd.DataFrame([dict(data)])
+
+    raise TypeError("data must be a mapping or pandas.DataFrame")
 
 
-# Все признаки модели, кроме sex, должны быть числовыми.
-NUMERIC_FEATURES = [
-    column
-    for column in FEATURE_COLUMNS
-    if column != "sex"
-]
-
-
-# ============================================================
-# ОСНОВНАЯ ВАЛИДАЦИЯ
-# ============================================================
-
-def validate_input(df: pd.DataFrame) -> list[str]:
+def validate_input(
+    data: Mapping[str, Any] | pd.DataFrame,
+    feature_contract: Mapping[str, Any] | str | Path,
+    *,
+    min_feature_coverage: float = 0.70,
+    require_anemia_fields: bool = True,
+) -> ValidationReport:
     """
-    Проверяет входные данные перед передачей в модель.
+    Validate incoming patient data against the frozen feature contract.
 
-    Parameters
-    ----------
-    df : pd.DataFrame
-        Данные одного или нескольких пациентов.
-
-    Returns
-    -------
-    list[str]
-        Список предупреждений.
-
-        Пустой список означает, что предупреждений нет.
-
-    Raises
-    ------
-    TypeError
-        Если передан объект, отличный от pandas.DataFrame.
-
-    ValueError
-        Если обнаружена критическая проблема:
-        - пустой DataFrame;
-        - идентификаторы пациента;
-        - отсутствующие признаки;
-        - неподдерживаемое значение sex;
-        - нечисловые значения;
-        - бесконечные значения.
+    Coverage is calculated from actually non-missing expected features.
+    Unknown/extraneous fields are reported but not treated as an error.
     """
+    frame = _to_frame(data)
+    contract = load_feature_contract(feature_contract)
 
-    # --------------------------------------------------------
-    # 1. Проверяем тип объекта
-    # --------------------------------------------------------
+    expected = list(contract["features"])
+    categorical = set(contract.get("categorical_features", []))
 
-    if not isinstance(df, pd.DataFrame):
-        raise TypeError(
-            "Ожидался pandas.DataFrame, "
-            f"получен {type(df).__name__}."
-        )
+    present_columns = [c for c in expected if c in frame.columns]
+    unknown = [c for c in frame.columns if c not in expected]
 
-    # --------------------------------------------------------
-    # 2. Проверяем, что данные не пустые
-    # --------------------------------------------------------
+    used = []
+    missing = []
 
-    if df.empty:
-        raise ValueError(
-            "Передан пустой DataFrame."
-        )
-
-    # --------------------------------------------------------
-    # 3. Не допускаем идентификаторы пациента
-    # --------------------------------------------------------
-    #
-    # patient_id не является признаком модели.
-    # Согласно архитектуре Meditron идентификаторы не должны
-    # передаваться в ML.
-
-    forbidden_columns = [
-        column
-        for column in ID_COLUMNS
-        if column in df.columns
-    ]
-
-    if forbidden_columns:
-        raise ValueError(
-            "Идентификаторы пациента не должны "
-            "передаваться в модель: "
-            + ", ".join(forbidden_columns)
-        )
-
-    # --------------------------------------------------------
-    # 4. Проверяем наличие всех 37 признаков
-    # --------------------------------------------------------
-
-    missing_columns = [
-        column
-        for column in FEATURE_COLUMNS
-        if column not in df.columns
-    ]
-
-    if missing_columns:
-        raise ValueError(
-            "Отсутствуют обязательные признаки модели: "
-            + ", ".join(missing_columns)
-        )
-
-    # --------------------------------------------------------
-    # 5. Проверяем sex
-    # --------------------------------------------------------
-
-    normalized_sex = (
-        df["sex"]
-        .astype("string")
-        .str.strip()
-        .str.lower()
-    )
-
-    invalid_sex_mask = (
-        normalized_sex.notna()
-        & ~normalized_sex.isin(ALLOWED_SEX_VALUES)
-    )
-
-    if invalid_sex_mask.any():
-
-        invalid_values = (
-            normalized_sex[invalid_sex_mask]
-            .dropna()
-            .unique()
-            .tolist()
-        )
-
-        raise ValueError(
-            "Недопустимое значение sex: "
-            + ", ".join(map(str, invalid_values))
-            + ". Допустимые значения: f, m."
-        )
-
-    # --------------------------------------------------------
-    # 6. Проверяем числовые признаки
-    # --------------------------------------------------------
-
-    invalid_numeric_columns = []
-
-    for column in NUMERIC_FEATURES:
-
-        # Проверяем только заполненные значения.
-        # NaN рассматривается отдельно как пропуск.
-        non_missing_mask = df[column].notna()
-
-        if not non_missing_mask.any():
+    for feature in expected:
+        if feature not in frame.columns:
+            missing.append(feature)
             continue
 
-        converted = pd.to_numeric(
-            df.loc[non_missing_mask, column],
-            errors="coerce",
-        )
+        if frame[feature].notna().any():
+            used.append(feature)
+        else:
+            missing.append(feature)
 
-        # Если исходное значение существовало,
-        # но после преобразования стало NaN,
-        # значит оно не является корректным числом.
-        if converted.isna().any():
-            invalid_numeric_columns.append(column)
+    coverage = len(used) / len(expected) if expected else 0.0
 
-    if invalid_numeric_columns:
-        raise ValueError(
-            "Нечисловые значения обнаружены в признаках: "
-            + ", ".join(invalid_numeric_columns)
-        )
+    warnings: list[str] = []
+    errors: list[str] = []
 
-    # --------------------------------------------------------
-    # 7. Проверяем бесконечные значения
-    # --------------------------------------------------------
-
-    infinite_columns = []
-
-    for column in NUMERIC_FEATURES:
-
-        numeric_values = pd.to_numeric(
-            df[column],
-            errors="coerce",
-        )
-
-        if np.isinf(numeric_values).any():
-            infinite_columns.append(column)
-
-    if infinite_columns:
-        raise ValueError(
-            "Обнаружены бесконечные значения в признаках: "
-            + ", ".join(infinite_columns)
-        )
-
-    # --------------------------------------------------------
-    # 8. Формируем предупреждения
-    # --------------------------------------------------------
-
-    warnings = []
-
-    # Проверяем пропущенные значения.
-    missing_counts = (
-        df[FEATURE_COLUMNS]
-        .isna()
-        .sum()
-    )
-
-    columns_with_missing = (
-        missing_counts[missing_counts > 0]
-        .index
-        .tolist()
-    )
-
-    if columns_with_missing:
+    if unknown:
         warnings.append(
-            "Обнаружены пропущенные значения: "
-            + ", ".join(columns_with_missing)
+            "Unknown fields will not be passed to the frozen models: "
+            + ", ".join(sorted(unknown))
         )
 
-    return warnings
-
-
-# ============================================================
-# ВАЛИДАЦИЯ ОДНОГО ПАЦИЕНТА
-# ============================================================
-
-def validate_patient(data: dict[str, Any]) -> list[str]:
-    """
-    Проверяет данные одного пациента.
-
-    Эта функция предназначена прежде всего для Predictor/API.
-
-    Полученный JSON/dict преобразуется в DataFrame из одной
-    строки, после чего используется общая функция validate_input().
-
-    Parameters
-    ----------
-    data : dict
-        Данные одного пациента.
-
-    Returns
-    -------
-    list[str]
-        Список предупреждений.
-    """
-
-    if not isinstance(data, dict):
-        raise TypeError(
-            "Данные пациента должны быть переданы как dict."
+    if coverage < min_feature_coverage:
+        warnings.append(
+            f"Feature coverage {coverage:.1%} is below the production "
+            f"reference threshold {min_feature_coverage:.1%}."
         )
 
-    if not data:
-        raise ValueError(
-            "Передан пустой словарь пациента."
+    if require_anemia_fields:
+        for feature in ("sex", "hemoglobin"):
+            if feature not in frame.columns or frame[feature].isna().all():
+                errors.append(
+                    f"{feature} is required to assemble the final anemia class."
+                )
+
+    if "sex" in frame.columns:
+        bad_sex = (
+            frame["sex"]
+            .dropna()
+            .astype(str)
+            .str.upper()
+            .map(lambda x: x not in {"F", "M", "FEMALE", "MALE", "Ж", "М", "ЖЕН", "МУЖ"})
         )
+        if bad_sex.any():
+            errors.append("sex contains unsupported values; expected F/M.")
 
-    patient_df = pd.DataFrame([data])
+    numeric_features = [
+        c for c in expected
+        if c not in categorical and c in frame.columns
+    ]
 
-    return validate_input(patient_df)
+    for col in numeric_features:
+        original_non_missing = frame[col].notna()
+        converted = pd.to_numeric(frame[col], errors="coerce")
+        invalid = original_non_missing & converted.isna()
+        if invalid.any():
+            errors.append(f"{col} contains non-numeric values.")
 
-
-# ============================================================
-# ПОЛУЧЕНИЕ ОЖИДАЕМОЙ ЕДИНИЦЫ
-# ============================================================
-
-def get_feature_unit(feature_name: str) -> str | None:
-    """
-    Возвращает ожидаемую единицу измерения признака.
-
-    Например:
-        get_feature_unit("hemoglobin") -> "g/L"
-        get_feature_unit("ferritin") -> "µg/L"
-
-    Parameters
-    ----------
-    feature_name : str
-        Название признака.
-
-    Returns
-    -------
-    str | None
-        Единица измерения.
-
-    Raises
-    ------
-    KeyError
-        Если признак отсутствует в схеме модели.
-    """
-
-    if feature_name not in FEATURE_UNITS:
-        raise KeyError(
-            f"Неизвестный признак: {feature_name}"
-        )
-
-    return FEATURE_UNITS[feature_name]
+    return ValidationReport(
+        n_rows=len(frame),
+        n_expected_features=len(expected),
+        used_features=used,
+        missing_features=missing,
+        unknown_features=unknown,
+        coverage=float(coverage),
+        warnings=warnings,
+        errors=errors,
+    )

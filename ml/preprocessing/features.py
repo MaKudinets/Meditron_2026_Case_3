@@ -1,209 +1,86 @@
-"""
-Подготовка признаков для модели Meditron.
+from __future__ import annotations
 
-Модуль содержит:
-- список целевых колонок;
-- список идентификаторов;
-- список служебных колонок;
-- фиксированный список признаков модели;
-- функцию подготовки DataFrame перед обучением и inference.
+from pathlib import Path
+from typing import Any, Mapping
 
-Важно:
-порядок FEATURE_COLUMNS должен быть одинаковым
-при обучении модели и при последующем inference.
-"""
-
+import numpy as np
 import pandas as pd
 
-
-# ============================================================
-# ЦЕЛЕВЫЕ КОЛОНКИ
-# ============================================================
-
-# Все колонки, содержащие целевую информацию.
-# Они не должны попадать в X, чтобы избежать утечки target.
-TARGET_COLUMNS = [
-    "anemia",
-    "iron_deficiency",
-    "B12_deficiency",
-    "folate_deficiency",
-    "B6_deficiency",
-    "copper_deficiency",
-    "inflammation_anemia",
-    "mixed_deficiency",
-    "anemia_class",
-    "deficiency_cause",
-]
+from .validator import load_feature_contract, validate_input
 
 
-# Основная целевая переменная текущей модели.
-MAIN_TARGET = "anemia_class"
+def _to_frame(data: Mapping[str, Any] | pd.DataFrame) -> pd.DataFrame:
+    if isinstance(data, pd.DataFrame):
+        return data.copy()
+    if isinstance(data, Mapping):
+        return pd.DataFrame([dict(data)])
+    raise TypeError("data must be a mapping or pandas.DataFrame")
 
 
-# ============================================================
-# ИДЕНТИФИКАТОРЫ
-# ============================================================
-
-# Идентификаторы пациента не являются признаками модели
-# и не должны передаваться в X.
-ID_COLUMNS = [
-    "patient_id",
-]
-
-
-# ============================================================
-# СЛУЖЕБНЫЕ КОЛОНКИ
-# ============================================================
-
-# Эти поля могут присутствовать в исходных данных,
-# но не используются моделью как признаки.
-META_COLUMNS = [
-    "record_origin",
-    "birth_date",
-    "anchor_sample_date",
-]
-
-
-# ============================================================
-# ФИНАЛЬНЫЙ СПИСОК ПРИЗНАКОВ
-# ============================================================
-
-# Список получен после preprocessing готового notebook.
-#
-# Порядок признаков фиксирован.
-# Этот же порядок должен использоваться:
-# 1. при обучении;
-# 2. при сохранении feature_list.json;
-# 3. при inference через Predictor.
-
-FEATURE_COLUMNS = [
-    "age_years",
-    "sex",
-    "hemoglobin",
-    "RBC",
-    "hematocrit",
-    "MCV",
-    "MCH",
-    "MCHC",
-    "RDW",
-    "platelets",
-    "WBC",
-    "reticulocytes",
-    "ferritin",
-    "serum_iron",
-    "transferrin",
-    "TIBC",
-    "UIBC",
-    "TSAT",
-    "sTfR",
-    "Ret_He",
-    "vitamin_B12",
-    "active_B12",
-    "MMA",
-    "homocysteine",
-    "folate",
-    "vitamin_B6",
-    "copper",
-    "ceruloplasmin",
-    "CRP",
-    "ESR",
-    "creatinine",
-    "eGFR",
-    "TSH",
-    "albumin",
-    "LDH",
-    "indirect_bilirubin",
-    "haptoglobin",
-]
-
-
-# ============================================================
-# ПОДГОТОВКА ПРИЗНАКОВ
-# ============================================================
-
-def prepare_features(df: pd.DataFrame) -> pd.DataFrame:
+def prepare_features(
+    data: Mapping[str, Any] | pd.DataFrame,
+    feature_contract: Mapping[str, Any] | str | Path,
+    *,
+    min_feature_coverage: float = 0.70,
+    require_anemia_fields: bool = True,
+    reject_low_coverage: bool = True,
+):
     """
-    Подготавливает DataFrame для передачи в модель.
-
-    Функция:
-    1. создаёт копию исходного DataFrame;
-    2. удаляет target-колонки;
-    3. удаляет идентификаторы пациента;
-    4. удаляет служебные колонки;
-    5. нормализует признак sex;
-    6. возвращает признаки в фиксированном порядке
-       FEATURE_COLUMNS.
-
-    Parameters
-    ----------
-    df : pd.DataFrame
-        Исходные данные одного или нескольких пациентов.
+    Convert incoming data to the exact frozen 37-feature schema.
 
     Returns
     -------
-    pd.DataFrame
-        DataFrame с признаками модели в фиксированном порядке.
-
-    Raises
-    ------
-    ValueError
-        Если отсутствуют признаки, необходимые модели.
+    X : pd.DataFrame
+        Features in the exact contract order.
+    report : ValidationReport
+        Validation/coverage report.
     """
-
-    # Не изменяем исходный DataFrame.
-    X = df.copy()
-
-    # --------------------------------------------------------
-    # 1. Удаляем target-поля и идентификаторы
-    # --------------------------------------------------------
-    # errors="ignore" нужен в том числе для inference:
-    # при запросе из API target-полей и patient_id
-    # может вообще не быть.
-    columns_to_drop = TARGET_COLUMNS + ID_COLUMNS + META_COLUMNS
-
-    X = X.drop(
-        columns=columns_to_drop,
-        errors="ignore",
+    contract = load_feature_contract(feature_contract)
+    report = validate_input(
+        data,
+        contract,
+        min_feature_coverage=min_feature_coverage,
+        require_anemia_fields=require_anemia_fields,
     )
 
-    # --------------------------------------------------------
-    # 2. Нормализуем категориальный признак sex
-    # --------------------------------------------------------
-    # В исходном notebook значения были представлены как F/M.
-    # Здесь сохраняем ту же preprocessing-логику:
-    # удаляем пробелы и приводим строку к нижнему регистру.
+    if report.errors:
+        raise ValueError("; ".join(report.errors))
 
-    if "sex" in X.columns:
-        X["sex"] = (
-            X["sex"]
-            .astype("string")
-            .str.strip()
-            .str.lower()
-        )
-
-    # --------------------------------------------------------
-    # 3. Проверяем наличие всех признаков модели
-    # --------------------------------------------------------
-
-    missing_features = [
-        column
-        for column in FEATURE_COLUMNS
-        if column not in X.columns
-    ]
-
-    if missing_features:
+    if reject_low_coverage and report.coverage < min_feature_coverage:
         raise ValueError(
-            "Отсутствуют признаки, необходимые модели: "
-            + ", ".join(missing_features)
+            f"Feature coverage {report.coverage:.1%} is below "
+            f"minimum {min_feature_coverage:.1%}."
         )
 
-    # --------------------------------------------------------
-    # 4. Фиксируем порядок признаков
-    # --------------------------------------------------------
-    # Даже если входной DataFrame содержит колонки
-    # в другом порядке или дополнительные поля,
-    # на выходе модель всегда получает одинаковую схему.
+    frame = _to_frame(data)
+    feature_columns = list(contract["features"])
+    categorical = set(contract.get("categorical_features", []))
 
-    X = X[FEATURE_COLUMNS].copy()
+    X = pd.DataFrame(index=frame.index)
 
-    return X
+    for feature in feature_columns:
+        if feature in frame.columns:
+            X[feature] = frame[feature]
+        else:
+            X[feature] = np.nan
+
+    for feature in feature_columns:
+        if feature not in categorical:
+            X[feature] = pd.to_numeric(X[feature], errors="coerce")
+
+    return X[feature_columns], report
+
+
+def prepare_catboost_frame(
+    frame: pd.DataFrame,
+    feature_columns: list[str],
+    categorical_features: list[str],
+) -> pd.DataFrame:
+    out = frame[feature_columns].copy()
+
+    for col in categorical_features:
+        out[col] = out[col].astype("object")
+        out[col] = out[col].where(out[col].notna(), "__MISSING__")
+        out[col] = out[col].astype(str)
+
+    return out

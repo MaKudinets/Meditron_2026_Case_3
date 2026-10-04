@@ -1,0 +1,13 @@
+pred_anemia_class,n
+mixed_deficiency,117
+iron_deficiency_anemia,116
+no_anemia_no_deficiency,112
+latent_deficiency,85
+anemia_other,74
+B12_deficiency_anemia,65
+inflammation_anemia,65
+B12_deficiency_no_anemia,49
+folate_deficiency_anemia,48
+folate_deficiency_no_anemia,37
+copper_deficiency,37
+B6_deficiency,35

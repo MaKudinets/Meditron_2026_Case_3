@@ -1,0 +1,2 @@
+accuracy_on_refit_cohort,macro_f1_on_refit_cohort,balanced_accuracy_on_refit_cohort,class_match_n,class_match_pct
+0.9845238095238096,0.9845973496240464,0.9827007111246241,827,98.45238095238096
