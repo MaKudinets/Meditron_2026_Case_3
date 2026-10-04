@@ -218,7 +218,13 @@ LOW_ML_PROBABILITY = 0.25
 def _present(x: Any) -> bool:
     return pd.notna(x)
 
+def _safe_lt(value, threshold) -> bool:
+    return _present(value) and value < threshold
 
+
+def _safe_gt(value, threshold) -> bool:
+    return _present(value) and value > threshold
+    
 def anemia_rule(row: pd.Series) -> int:
     sex = row.get("sex")
     hb = row.get("hemoglobin", np.nan)
@@ -343,12 +349,32 @@ def iron_rule_score(row: pd.Series) -> float:
     ret_he = row.get("Ret_He", np.nan)
 
     conditions = [
-        (_present(ret_he), ret_he < CLINICAL["Ret_He_low"]["value"], 0.30),
-        (_present(ferritin), ferritin < CLINICAL["ferritin_low"]["value"], 0.25),
-        (_present(iron), iron < CLINICAL["serum_iron_low"]["value"], 0.15),
-        (_present(tsat), tsat < CLINICAL["TSAT_low"]["value"], 0.20),
-        (_present(tibc), tibc > CLINICAL["TIBC_high"]["value"], 0.10),
-    ]
+    (
+        _present(ret_he),
+        _safe_lt(ret_he, CLINICAL["Ret_He_low"]["value"]),
+        0.30,
+    ),
+    (
+        _present(ferritin),
+        _safe_lt(ferritin, CLINICAL["ferritin_low"]["value"]),
+        0.25,
+    ),
+    (
+        _present(iron),
+        _safe_lt(iron, CLINICAL["serum_iron_low"]["value"]),
+        0.15,
+    ),
+    (
+        _present(tsat),
+        _safe_lt(tsat, CLINICAL["TSAT_low"]["value"]),
+        0.20,
+    ),
+    (
+        _present(tibc),
+        _safe_gt(tibc, CLINICAL["TIBC_high"]["value"]),
+        0.10,
+    ),
+]
 
     score = weighted_evidence(conditions)
 

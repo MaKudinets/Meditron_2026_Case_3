@@ -19,7 +19,7 @@ class PredictionSummary(BaseModel):
 
 class DeficiencyResult(BaseModel):
     """
-    Результат отдельной ветки скрининга.
+    Результат отдельной диагностической ветки.
     """
 
     probability: float = Field(
@@ -77,8 +77,7 @@ class EvidenceItem(BaseModel):
 
 class ConflictItem(BaseModel):
     """
-    Конфликт между ML-предсказанием
-    и экспертными правилами.
+    Конфликт между ML-предсказанием и экспертными правилами.
     """
 
     target: str
@@ -106,8 +105,7 @@ class ConflictItem(BaseModel):
 
 class RecommendedTest(BaseModel):
     """
-    Анализ, который может помочь уточнить
-    скрининговый результат.
+    Анализ, который может помочь уточнить скрининговый результат.
     """
 
     test: str
@@ -119,7 +117,7 @@ class RecommendedTest(BaseModel):
 
 class ModelInfo(BaseModel):
     """
-    Информация о production ML bundle.
+    Версия production ML bundle.
     """
 
     bundle_name: str | None = None
@@ -129,7 +127,7 @@ class ModelInfo(BaseModel):
 
 class ScreeningResponse(BaseModel):
     """
-    Полный API-ответ одного скрининга.
+    Полный ответ сервиса для одного скрининга.
     """
 
     screening_id: str

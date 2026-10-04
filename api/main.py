@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from api.routes.metadata import router as metadata_router
 from api.routes.health import router as health_router
-from api.routes.predict import router as predict_router
+from api.routes.screenings import router as screenings_router
 
 
 app = FastAPI(
@@ -15,7 +15,6 @@ app = FastAPI(
 )
 
 
-# CORS нужен для подключения frontend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -28,25 +27,15 @@ app.add_middleware(
 )
 
 
-# Подключаем маршруты
-app.include_router(
-    health_router
-)
-
-app.include_router(
-    predict_router
-)
-
+app.include_router(health_router)
+app.include_router(screenings_router)
+app.include_router(metadata_router)
 
 @app.get(
     "/",
     tags=["Root"],
 )
 def root():
-    """
-    Базовый endpoint API.
-    """
-
     return {
         "service": "Meditron API",
         "status": "running",

@@ -30,7 +30,7 @@ class Confidence(BaseModel):
 
 class DataQuality(BaseModel):
     """
-    Информация о полноте входных данных.
+    Информация о полноте входных лабораторных данных.
     """
 
     coverage: float = Field(

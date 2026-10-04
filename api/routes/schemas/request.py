@@ -7,8 +7,8 @@ class PatientFeatures(BaseModel):
     """
     Лабораторные и демографические данные одного пациента.
 
-    Названия полей соответствуют production feature contract
-    ML-модели.
+    Названия признаков соответствуют frozen feature contract
+    production ML-модели.
     """
 
     model_config = ConfigDict(
@@ -180,7 +180,7 @@ class PatientFeatures(BaseModel):
     )
 
     # ---------------------------------------------------------
-    # Inflammation / renal / thyroid / general
+    # Inflammation / general laboratory context
     # ---------------------------------------------------------
 
     CRP: float | None = Field(
