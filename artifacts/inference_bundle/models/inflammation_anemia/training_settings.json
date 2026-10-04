@@ -1,0 +1,14 @@
+{
+  "target": "inflammation_anemia",
+  "final_l1_C": 1.0,
+  "outer_fold_C_values": [
+    1.0,
+    1.0,
+    1.0,
+    0.03162277660168379,
+    1.0
+  ],
+  "n_internal_patients": 840,
+  "positive_n": 65,
+  "negative_n": 775
+}

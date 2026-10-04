@@ -1,0 +1,666 @@
+patient_id,test,target,reason
+P000004,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000005,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000005,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000008,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000010,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000011,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000013,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000013,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000013,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000013,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000015,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000016,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000016,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000018,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000018,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000019,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000020,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000020,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000024,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000026,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000026,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000027,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000028,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000028,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000029,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000030,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000031,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000032,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000040,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000040,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000040,folate,folate_deficiency,Уточнение фолатного статуса.
+P000041,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000043,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000044,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000045,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000046,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000046,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000046,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000049,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000051,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000051,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000051,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000051,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000052,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000053,ceruloplasmin,copper_deficiency,Уточнение обмена меди.
+P000055,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000055,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000060,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000064,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000067,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000068,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000068,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000068,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000068,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000070,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000071,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000073,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000073,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000073,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000073,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000075,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000075,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000077,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000079,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000081,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000082,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000082,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000083,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000083,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000083,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000083,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000083,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000087,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000089,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000096,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000096,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000097,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000098,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000099,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000099,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000105,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000105,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000112,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000115,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000116,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000116,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000122,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000122,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000124,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000125,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000125,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000129,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000130,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000133,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000135,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000142,folate,folate_deficiency,Уточнение фолатного статуса.
+P000142,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000143,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000143,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000143,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000144,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000144,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000144,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000147,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000150,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000151,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000152,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000152,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000167,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000176,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000176,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000176,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000179,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000179,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000180,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000180,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000181,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000184,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000184,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000187,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000188,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000192,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000192,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000195,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000196,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000196,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000196,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000196,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000198,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000198,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000199,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000201,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000202,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000204,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000204,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000204,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000205,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000208,ceruloplasmin,copper_deficiency,Уточнение обмена меди.
+P000209,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000209,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000211,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000214,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000215,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000216,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000216,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000218,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000221,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000221,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000221,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000221,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000223,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000227,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000228,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000232,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000232,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000234,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000234,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000235,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000238,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000239,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000239,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000239,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000239,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000241,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000242,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000244,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000248,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000254,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000255,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000255,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000256,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000256,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000257,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000260,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000260,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000262,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000262,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000262,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000263,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000264,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000264,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000264,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000266,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000266,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000266,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000266,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000268,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000273,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000273,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000273,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000274,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000275,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000276,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000277,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000277,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000280,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000280,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000280,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000285,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000287,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000292,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000293,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000293,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000293,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000294,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000295,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000295,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000295,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000296,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000297,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000297,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000300,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000302,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000302,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000304,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000307,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000307,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000307,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000310,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000310,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000311,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000311,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000312,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000316,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000321,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000323,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000325,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000327,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000327,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000329,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000330,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000330,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000330,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000330,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000333,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000334,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000335,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000335,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000336,ceruloplasmin,copper_deficiency,Уточнение обмена меди.
+P000338,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000338,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000338,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000339,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000339,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000340,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000340,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000340,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000341,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000342,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000343,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000345,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000345,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000345,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000346,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000347,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000349,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000350,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000352,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000354,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000355,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000355,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000355,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000355,folate,folate_deficiency,Уточнение фолатного статуса.
+P000361,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000365,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000365,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000365,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000365,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000369,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000370,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000371,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000371,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000372,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000373,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000377,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000377,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000380,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000382,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000383,ceruloplasmin,copper_deficiency,Уточнение обмена меди.
+P000384,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000386,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000386,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000386,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000394,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000394,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000395,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000397,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000399,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000399,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000400,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000404,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000404,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000404,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000406,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000411,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000412,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000413,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000415,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000415,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000415,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000417,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000418,ceruloplasmin,copper_deficiency,Уточнение обмена меди.
+P000419,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000419,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000419,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000419,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000419,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000420,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000420,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000420,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000420,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000421,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000421,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000421,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000422,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000422,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000423,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000425,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000426,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000428,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000428,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000430,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000432,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000432,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000432,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000434,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000439,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000440,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000442,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000445,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000446,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000450,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000450,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000451,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000451,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000451,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000453,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000453,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000454,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000455,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000456,folate,folate_deficiency,Уточнение фолатного статуса.
+P000456,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000458,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000458,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000459,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000460,ceruloplasmin,copper_deficiency,Уточнение обмена меди.
+P000461,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000461,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000461,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000465,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000468,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000468,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000469,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000473,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000474,ceruloplasmin,copper_deficiency,Уточнение обмена меди.
+P000479,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000480,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000480,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000480,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000481,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000481,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000481,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000481,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000483,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000483,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000485,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000486,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000490,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000490,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000492,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000492,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000493,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000493,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000493,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000494,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000494,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000495,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000495,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000495,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000496,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000499,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000499,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000499,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000500,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000500,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000500,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000502,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000508,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000508,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000508,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000508,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000509,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000509,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000510,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000510,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000510,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000512,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000516,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000517,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000517,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000517,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000520,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000521,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000523,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000526,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000526,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000528,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000529,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000529,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000532,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000535,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000535,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000540,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000541,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000542,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000542,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000543,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000546,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000553,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000557,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000558,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000559,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000560,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000562,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000566,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000568,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000570,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000571,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000573,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000573,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000573,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000573,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000577,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000577,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000579,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000580,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000581,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000582,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000585,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000589,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000590,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000591,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000591,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000591,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000592,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000596,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000597,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000597,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000597,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000600,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000601,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000601,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000602,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000602,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000603,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000608,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000608,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000608,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000608,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000608,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000610,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000611,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000611,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000612,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000612,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000612,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000613,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000616,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000617,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000617,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000619,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000619,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000622,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000627,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000628,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000628,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000630,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000632,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000635,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000636,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000637,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000637,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000639,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000639,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000640,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000641,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000641,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000641,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000641,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000643,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000643,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000644,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000645,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000646,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000648,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000650,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000651,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000652,copper,copper_deficiency,Уточнение обмена меди.
+P000655,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000655,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000656,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000656,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000656,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000657,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000658,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000658,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000658,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000665,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000667,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000667,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000669,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000669,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000670,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000671,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000671,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000674,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000674,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000675,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000676,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000676,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000676,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000676,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000676,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000677,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000677,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000677,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000679,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000680,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000682,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000682,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000684,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000686,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000687,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000688,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000688,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000688,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000689,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000689,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000689,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000691,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000692,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000693,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000696,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000697,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000698,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000698,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000701,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000701,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000701,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000706,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000709,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000710,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000711,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000711,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000712,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000716,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000718,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000719,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000720,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000720,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000721,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000721,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000721,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000723,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000723,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000724,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000725,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000726,ferritin,iron_deficiency,Уточнение железодефицитного профиля.
+P000726,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000726,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000727,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000727,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000727,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000727,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000731,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000733,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000734,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000735,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000736,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000740,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000740,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000743,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000744,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000744,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000745,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000747,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000747,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000753,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000754,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000755,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000755,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000758,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000762,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000763,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000765,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000767,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000767,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000772,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000772,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000774,folate,folate_deficiency,Уточнение фолатного статуса.
+P000774,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000775,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000777,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000780,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000785,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000786,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000787,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000788,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000788,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000788,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000789,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000789,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000791,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000792,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000792,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000792,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000792,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000793,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000793,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000793,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000793,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000794,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000796,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000796,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000797,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000797,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000799,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000799,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000800,homocysteine,folate_deficiency,Уточнение фолатного статуса.
+P000801,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000803,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000803,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000805,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000805,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000805,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000806,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000808,vitamin_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000808,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000808,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000808,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000810,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000810,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000811,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000811,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000811,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000812,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000813,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000813,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000813,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000814,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000814,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000818,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000818,MMA,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000818,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000820,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000820,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000822,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000822,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000829,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000830,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000833,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.
+P000835,active_B12,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000835,homocysteine,B12_deficiency,Уточнение B12-дефицита при неполных данных.
+P000838,TSAT,iron_deficiency,Уточнение железодефицитного профиля.
+P000838,Ret_He,iron_deficiency,Уточнение железодефицитного профиля.

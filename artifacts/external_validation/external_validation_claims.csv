@@ -1,0 +1,9 @@
+claim,status,why
+Frozen inference pipeline runs on independent external data,YES,Models and thresholds were fixed before NHANES inference.
+External feature coverage evaluated,YES,Direct mapping to the 37-feature contract was measured.
+Missingness shift evaluated,YES,Internal and external missingness were compared feature-wise.
+Distribution/domain shift evaluated,YES,Comparable numeric features were tested with KS statistics.
+L1 vs CatBoost external agreement evaluated,YES,Calibrated model probabilities were compared.
+External 12-class Macro-F1,NO,NHANES does not contain comparable 12-class ground truth.
+External accuracy for all 6 deficiency targets,NO,Independent labels are unavailable for most targets.
+External calibration curve against true labels,NO,Requires independent binary labels for the same target definition.

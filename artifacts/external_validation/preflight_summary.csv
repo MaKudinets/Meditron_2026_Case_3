@@ -1,0 +1,7 @@
+check,ok,details
+internal_dataset_loaded,True,"shape=(840, 48)"
+feature_contract_37,True,n_features=37
+ensemble_oof_predictions,True,/home/sinopah/meditron/artifacts/ensemble/ensemble_oof_predictions.csv
+ensemble_meta_settings,True,/home/sinopah/meditron/artifacts/ensemble/ensemble_meta_settings.csv
+deployable_model_artifacts,True,n_model_artifacts=24
+READY_FOR_EXTERNAL_INFERENCE,True,Можно переходить к mapping внешнего датасета.
