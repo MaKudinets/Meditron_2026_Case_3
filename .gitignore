@@ -81,6 +81,13 @@ Thumbs.db
 *.log
 logs/
 
+# Jupyter
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Windows alternate data stream files
+*:Zone.Identifier
+**/*:Zone.Identifier
 
 # ==========================================
 # Temporary files
