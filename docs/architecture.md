@@ -13,7 +13,7 @@
 ```text
 ┌─────────────────────┐        HTTP        ┌──────────────────────────────┐
 │      Frontend       │  ───────────────>  │      Backend API             │
-│  Vite / React / Nginx│ <───────────────  │      api/main.py             │
+│ Vite / React / Nginx│ <───────────────   │      api/main.py             │
 └─────────────────────┘                    │      FastAPI + Uvicorn       │
                                            └──────────────┬───────────────┘
                                                           │
@@ -22,12 +22,13 @@
                          v                                v                                v
               ┌────────────────────┐           ┌────────────────────┐           ┌────────────────────┐
               │   ML Inference     │           │   Expert System    │           │   SQLite Storage   │
-              │ predictor.py       │           │ engine.py          │           │ meditron.db        │
+              │ ml/inference/      │           │ expert/engine.py   │           │ meditron.db        │
               └────────────────────┘           └────────────────────┘           └────────────────────┘
                          ^
                          │
               ┌──────────────────────────────────────────────┐
               │        Artifacts / Notebooks                 │
+              │  ml/artifacts/                               │
               │  notebooks/artifacts/baselines               │
               │  notebooks/artifacts/hierarchical            │
               └──────────────────────────────────────────────┘
@@ -79,8 +80,25 @@ Meditron_2026_Case_3/
 │   │   └── tokens.py
 │   └── main.py
 ├── ml/
-│   └── inference/
-│       └── predictor.py
+│   ├── artifacts/
+│   │   ├── class_mapping.json
+│   │   └── feature_list.json
+│   ├── inference/
+│   │   ├── __init__.py
+│   │   ├── ensemble.py
+│   │   ├── loader.py
+│   │   └── predictor.py
+│   ├── preprocessing/
+│   │   ├── __init__.py
+│   │   ├── features.py
+│   │   ├── medical_features.py
+│   │   └── validator.py
+│   └── training/
+│       ├── __init__.py
+│       ├── calibration.py
+│       ├── evaluate.py
+│       ├── train_catboost.py
+│       └── train_l1.py
 ├── expert/
 │   └── engine.py
 ├── notebooks/
@@ -116,6 +134,7 @@ Meditron_2026_Case_3/
 
 - `Meditron_2026_Case_3/notebooks/artifacts/baselines/`
 - `notebooks/artifacts/hierarchical/`
+- `ml/artifacts/`
 
 ---
 
@@ -150,15 +169,26 @@ Meditron_2026_Case_3/
 - **`api/resources/`** — статические справочники и вспомогательные данные:
   - `lab_groups.py` — группы лабораторных показателей.
 
-### 4.2 ML Inference
+### 4.2 ML-модуль (модуль `ml/`)
 
-- Модуль: `ml/inference/predictor.py`
-- Назначение:
-  - загрузка обученных моделей и артефактов;
-  - предобработка входных признаков;
-  - получение предсказаний;
-  - поддержка baseline- и hierarchical-моделей;
-  - подготовка данных для экспертного слоя.
+Модуль `ml/` содержит всю логику машинного обучения: от препроцессинга и обучения до инференса и ансамблирования.
+
+- **`ml/artifacts/`** — сериализованные артефакты, необходимые для инференса:
+  - `class_mapping.json` — соответствие классов и их идентификаторов;
+  - `feature_list.json` — список признаков, ожидаемых моделью.
+- **`ml/inference/`** — логика инференса:
+  - `loader.py` — загрузка моделей и артефактов;
+  - `ensemble.py` — логика ансамблирования предсказаний;
+  - `predictor.py` — основной модуль получения предсказаний.
+- **`ml/preprocessing/`** — предобработка данных:
+  - `features.py` — общая инженерия признаков;
+  - `medical_features.py` — специфические медицинские признаки;
+  - `validator.py` — валидация входных данных.
+- **`ml/training/`** — обучение и оценка моделей:
+  - `train_catboost.py` — обучение модели CatBoost;
+  - `train_l1.py` — обучение модели первого уровня (L1);
+  - `calibration.py` — калибровка вероятностей;
+  - `evaluate.py` — расчёт метрик качества.
 
 ### 4.3 Expert System
 
@@ -200,18 +230,27 @@ Meditron_2026_Case_3/
 3. `api/main.py` принимает запрос, валидирует его через схемы в `api/schemas/`.
 4. Роутер из `api/routes/` обрабатывает запрос и при необходимости обращается к `api/database/` или `api/security/`.
 5. API вызывает `ml/inference/predictor.py`.
-6. Predictor загружает нужные артефакты из `notebooks/artifacts/baselines/` или `notebooks/artifacts/hierarchical/`.
-7. Predictor возвращает ML-предсказание.
-8. API передаёт результат в `expert/engine.py`.
-9. Expert engine применяет правила, калибровку и формирует объяснение.
-10. API сохраняет необходимые данные в SQLite.
-11. API возвращает frontend структурированный ответ: предсказание + объяснение + метаданные.
+6. Predictor использует `ml/inference/loader.py` для загрузки моделей и артефактов из `ml/artifacts/`, а также `ml/inference/ensemble.py` для агрегации.
+7. Предобработка входных данных выполняется через `ml/preprocessing/features.py` и `ml/preprocessing/validator.py`.
+8. Predictor возвращает ML-предсказание.
+9. API передаёт результат в `expert/engine.py`.
+10. Expert engine применяет правила, калибровку и формирует объяснение.
+11. API сохраняет необходимые данные в SQLite.
+12. API возвращает frontend структурированный ответ: предсказание + объяснение + метаданные.
 
 ---
 
 ## 6. Артефакты и модели
 
-### 6.1 Baseline-артефакты
+### 6.1 ML-артефакты
+
+Путь: `ml/artifacts/`
+
+Содержит:
+- `class_mapping.json` — маппинг классов;
+- `feature_list.json` — перечень признаков.
+
+### 6.2 Baseline-артефакты
 
 Путь: `Meditron_2026_Case_3/notebooks/artifacts/baselines/`
 
@@ -222,7 +261,7 @@ Meditron_2026_Case_3/
 - параметры предобработки;
 - файлы для сравнения.
 
-### 6.2 Hierarchical-артефакты
+### 6.3 Hierarchical-артефакты
 
 Путь: `notebooks/artifacts/hierarchical/`
 
@@ -382,7 +421,7 @@ docker compose up --build
 
 ## 11. Миграция
 
-Файл `README_MIGRATION.md` предназначен для описания миграционных шагов, изменений структуры проекта, переноса артефактов и обновления окружения. В предоставленном фрагменте содержимое файла не приведено.
+Файл `README_MIGRATION.md` предназначен для описания миграционных шагов, изменений структуры проекта, переноса артефактов и обновления окружения.
 
 ---
 
@@ -390,7 +429,7 @@ docker compose up --build
 
 Возможные направления развития:
 
-- добавление новых ML-моделей в `ml/inference/predictor.py`;
+- добавление новых ML-моделей в `ml/training/` и `ml/inference/`;
 - расширение правил в `expert/engine.py`;
 - подключение PostgreSQL вместо SQLite;
 - выделение inference-сервиса в отдельный контейнер;
@@ -403,4 +442,4 @@ docker compose up --build
 
 ## 13. Краткое резюме
 
-**Meditron 2026 Case 3** — это контейнеризованная система из frontend, модульного FastAPI backend, ML-инференса, экспертного движка и SQLite-хранилища. Backend API разделён на слои: маршруты (`routes`), схемы (`schemas`), база данных (`database`), безопасность (`security`) и справочники (`resources`). Исследовательская часть построена на ноутбуках и артефактах `baselines` и `hierarchical`. Развёртывание выполняется через Docker Compose, что обеспечивает воспроизводимость и удобный запуск backend и frontend.
+**Meditron 2026 Case 3** — это контейнеризованная система из frontend, модульного FastAPI backend, ML-модуля, экспертного движка и SQLite-хранилища. Backend API разделён на слои: маршруты (`routes`), схемы (`schemas`), база данных (`database`), безопасность (`security`) и справочники (`resources`). ML-модуль включает артефакты, инференс, препроцессинг и обучение. Исследовательская часть построена на ноутбуках и артефактах `baselines` и `hierarchical`. Развёртывание выполняется через Docker Compose, что обеспечивает воспроизводимость и удобный запуск backend и frontend.
