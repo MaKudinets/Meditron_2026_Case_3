@@ -1118,3 +1118,1205 @@ th {
     transition: none !important;
   }
 }
+
+/* === MEDITRON FIGMA STYLE-ONLY OVERRIDES: START === */
+
+/* ========================================================================== */
+/* MEDITRON — FIGMA VISUAL THEME                                               */
+/* Styling-only patch. No application logic, routes, API calls or state.       */
+/* Source: Sechenov Meditron designer specs, desktop frame 1440px.             */
+/* ========================================================================== */
+
+:root {
+  --mint: #0deacf;
+  --hover: #4ce6d6;
+  --pressed: #0abba5;
+  --navy: #103648;
+  --ink: #101828;
+  --muted: #667085;
+  --line: #dce8f1;
+  --paper: #eaf5fd;
+  --panel: #ffffff;
+  --brand: #075bae;
+  --radius: 16px;
+  --figma-blue: #075bae;
+  --figma-deep: #103648;
+  --figma-cyan: #0deacf;
+  --figma-cyan-hover: #4ce6d6;
+  --figma-cyan-pressed: #0abba5;
+  --figma-bg: #eaf5fd;
+  --figma-card: #ffffff;
+  --figma-text: #101828;
+  --figma-muted: #667085;
+  --figma-stroke: #9fc3d8;
+  --figma-track: #dce8f1;
+}
+
+html {
+  background: var(--figma-bg);
+}
+
+body {
+  background: var(--figma-bg);
+  color: var(--figma-text);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+}
+
+main {
+  background: var(--figma-bg);
+}
+
+.container {
+  max-width: 1440px;
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Header — designer spec: 1440 × 92, #075BAE                                 */
+/* -------------------------------------------------------------------------- */
+
+#header {
+  background: var(--figma-blue);
+  color: #fff;
+  position: relative;
+  z-index: 20;
+}
+
+.topbar {
+  height: 92px;
+  border-bottom: 0;
+  gap: 32px;
+}
+
+.brand {
+  gap: 0;
+  min-width: 200px;
+}
+
+.brand img {
+  width: 180px;
+  height: 52px;
+  object-fit: contain;
+  object-position: left center;
+  filter: brightness(0) invert(1);
+}
+
+.wordmark {
+  display: none;
+}
+
+nav {
+  gap: 32px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+nav a,
+nav a:hover,
+nav a.active {
+  color: #fff;
+}
+
+nav > a:not(.btn) {
+  position: relative;
+  padding: 34px 0 31px;
+}
+
+nav > a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 22px;
+  height: 2px;
+  background: var(--figma-cyan);
+  transition: right 0.2s ease;
+}
+
+nav > a:not(.btn):hover::after,
+nav > a.active:not(.btn)::after {
+  right: 0;
+}
+
+nav a[href="#/profile"] {
+  padding: 8px 16px !important;
+  border: 2px solid #fff;
+  border-radius: 16px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+nav a[href="#/profile"]::after {
+  display: none;
+}
+
+nav .btn.small {
+  min-width: 180px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: var(--figma-cyan);
+  color: var(--figma-deep);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.modebar {
+  display: none;
+}
+
+.menu-toggle {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Buttons                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.btn {
+  min-height: 48px;
+  padding: 14px 24px;
+  gap: 16px;
+  border-radius: 12px;
+  background: var(--figma-cyan);
+  color: var(--figma-deep);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.btn:hover {
+  background: var(--figma-cyan-hover);
+}
+
+.btn:active {
+  background: var(--figma-cyan-pressed);
+}
+
+.btn.secondary {
+  color: #07356f;
+  background: #fff;
+  border-color: var(--figma-blue);
+}
+
+.btn.secondary:hover {
+  background: #f6fbff;
+}
+
+.btn.dark {
+  background: var(--figma-blue);
+  color: #fff;
+}
+
+.btn.small {
+  min-height: 44px;
+  padding: 11px 18px;
+  font-size: 14px;
+}
+
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(13, 234, 207, 0.7);
+  outline-offset: 3px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Typography                                                                  */
+/* -------------------------------------------------------------------------- */
+
+h1 {
+  color: #07356f;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  color: var(--figma-deep);
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  color: var(--figma-deep);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+p {
+  line-height: 24px;
+}
+
+.subtitle {
+  color: #344054;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.eyebrow {
+  color: var(--figma-blue);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+}
+
+.eyebrow::before {
+  background: var(--figma-cyan);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Home / Hero                                                                 */
+/* -------------------------------------------------------------------------- */
+
+.hero {
+  min-height: 640px;
+  margin: 0 -64px;
+  border-radius: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(500px, 0.95fr);
+  color: #fff;
+  background:
+    linear-gradient(90deg, rgba(4, 51, 125, 0.97) 0%, rgba(4, 71, 154, 0.86) 45%, rgba(5, 91, 174, 0.48) 100%),
+    url("/assets/dna-bg.webp") center / cover no-repeat;
+}
+
+.hero-copy {
+  padding: 84px 0 72px 96px;
+  align-self: center;
+}
+
+.hero .eyebrow {
+  color: var(--figma-cyan);
+}
+
+.hero h1 {
+  max-width: 640px;
+  margin: 24px 0;
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 64px;
+  line-height: 72px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero h1 span {
+  color: var(--figma-cyan);
+}
+
+.hero p {
+  max-width: 560px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.hero .actions {
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.hero .btn {
+  min-width: 220px;
+  min-height: 56px;
+  padding: 16px 24px;
+  border-radius: 16px;
+  font-size: 16px;
+}
+
+.hero .secondary {
+  color: #fff;
+  background: transparent;
+  border: 2px solid #fff;
+}
+
+.hero .secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-art {
+  align-items: flex-end;
+  overflow: visible;
+  background: transparent;
+}
+
+.hero-art::before {
+  display: none;
+}
+
+.hero-art img {
+  width: 110%;
+  height: 640px;
+  max-width: none;
+  object-fit: contain;
+  object-position: right bottom;
+  transform: translateX(2%);
+  filter: drop-shadow(0 18px 28px rgba(3, 32, 80, 0.22));
+}
+
+.hero-note {
+  display: none;
+}
+
+/* First content section: white Figma-style cards on light-blue field */
+.hero + .section {
+  position: relative;
+  z-index: 2;
+  margin-top: -36px;
+  padding-top: 84px;
+}
+
+.section {
+  padding: 64px 0;
+}
+
+.section-head {
+  gap: 48px;
+  margin-bottom: 24px;
+}
+
+.section-head p {
+  max-width: 520px;
+  color: #344054;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.cards {
+  gap: 24px;
+}
+
+.card {
+  border: 1px solid var(--figma-stroke);
+  border-radius: 16px;
+  background: #fff;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(16, 54, 72, 0.06);
+}
+
+.card p {
+  color: #344054;
+}
+
+.cards .card {
+  min-height: 160px;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: rgba(13, 234, 207, 0.16);
+  color: var(--figma-blue);
+  font-size: 22px;
+}
+
+.tint {
+  background: var(--figma-bg);
+}
+
+.steps {
+  gap: 24px;
+  padding: 40px 48px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(16, 54, 72, 0.06);
+}
+
+.step {
+  position: relative;
+  border-top: 0;
+  padding: 0 20px 0 0;
+}
+
+.step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -6px;
+  top: 14px;
+  color: #101828;
+  font: 28px/1 "IBM Plex Sans", sans-serif;
+}
+
+.step span {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(13, 234, 207, 0.14);
+  color: var(--figma-blue);
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+}
+
+.step h3 {
+  margin-top: 16px;
+  color: #101010;
+}
+
+.step p {
+  color: #344054;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about {
+  min-height: 400px;
+  gap: 48px;
+  padding: 40px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(16, 54, 72, 0.06);
+}
+
+.about img {
+  max-height: 370px;
+  object-fit: contain;
+  border-radius: 0;
+  mix-blend-mode: multiply;
+}
+
+.about p {
+  color: #344054;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.faq {
+  max-width: 1120px;
+}
+
+.faq details {
+  min-height: 64px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #dce8f1;
+  background: #fff;
+}
+
+.faq details:first-of-type {
+  border-radius: 16px 16px 0 0;
+}
+
+.faq details:last-of-type {
+  border-radius: 0 0 16px 16px;
+  border-bottom: 0;
+}
+
+.faq summary {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.faq summary::after {
+  color: #101010;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Generic application pages                                                  */
+/* -------------------------------------------------------------------------- */
+
+.page {
+  min-height: 70vh;
+  padding: 40px 0 72px;
+}
+
+.back {
+  margin-bottom: 24px;
+  color: #101828;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.page h1 {
+  margin-bottom: 12px;
+  color: #12335b;
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 600;
+}
+
+.result-top {
+  align-items: flex-start;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Screening form — values from Data Input specification                      */
+/* -------------------------------------------------------------------------- */
+
+.workspace {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+#screening-form {
+  width: 100%;
+  order: 0;
+}
+
+/* Preserve existing progress logic and move its visual block above the form. */
+.side-card {
+  position: static;
+  order: -1;
+  align-self: flex-end;
+  width: 350px;
+  padding: 0;
+  margin: 0 0 24px;
+  border-radius: 0;
+  background: transparent;
+}
+
+.side-card .eyebrow,
+.side-card p,
+.side-card img {
+  display: none;
+}
+
+.side-card h3 {
+  margin: 0 !important;
+  color: #667085;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.side-card .progress {
+  height: 8px;
+  margin: 8px 0 0;
+  border-radius: 999px;
+  background: var(--figma-track);
+}
+
+.progress > div {
+  background: var(--figma-cyan);
+}
+
+.form-section {
+  margin-bottom: 24px;
+  padding: 32px;
+  border: 1px solid var(--figma-blue);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.form-section h3 {
+  margin-bottom: 8px;
+  color: #07356f;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.form-section > p {
+  margin-bottom: 24px;
+  color: #667085;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.fields {
+  gap: 16px 32px;
+}
+
+.field label {
+  margin-bottom: 8px;
+  color: #101828;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+input,
+select,
+textarea {
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1px solid #438bd5;
+  border-radius: 8px;
+  background: #fff;
+  color: #101828;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.input-wrap input {
+  padding-right: 88px;
+}
+
+.unit {
+  right: 12px;
+  top: 12px;
+  color: #667085;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--figma-cyan);
+  outline: 2px solid rgba(13, 234, 207, 0.25);
+}
+
+/* Existing upload/example controls remain in the same DOM and logic. */
+.page > .result-top .actions {
+  margin-top: 0;
+}
+
+#upload-lab-file {
+  min-width: 210px;
+  color: #07356f;
+  background: #fff;
+  border-color: #438bd5;
+}
+
+#example {
+  color: #07356f;
+  background: transparent;
+  border-color: transparent;
+}
+
+#import-status .card {
+  margin-top: 24px;
+  border-color: #8bcfca;
+}
+
+.check {
+  margin: 24px 0;
+  color: #344054;
+}
+
+#screening-form > .actions {
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  margin-top: 24px;
+}
+
+#submit-screening {
+  min-width: 230px;
+  min-height: 52px;
+}
+
+#screening-form > .actions .btn.secondary {
+  min-width: 160px;
+  color: #e32222;
+  border: 2px solid #e32222;
+  background: #fff;
+}
+
+#screening-form > .actions .btn.secondary:hover {
+  background: #fff7f7;
+}
+
+/* -------------------------------------------------------------------------- */
+/* CSS-only loading composition: uses the already-existing disabled state.     */
+/* No event handler or request flow is changed.                                */
+/* -------------------------------------------------------------------------- */
+
+body:has(#submit-screening:disabled) {
+  overflow: hidden;
+}
+
+main:has(#submit-screening:disabled)::before {
+  content: "";
+  position: fixed;
+  z-index: 1000;
+  inset: 92px 0 0;
+  background:
+    url("/assets/robot-seated.webp") calc(50% - 420px) calc(50% + 130px) / 510px auto no-repeat,
+    #eaf5fd;
+}
+
+main:has(#submit-screening:disabled)::after {
+  content: "";
+  position: fixed;
+  z-index: 1001;
+  left: calc(50% - 200px);
+  top: 240px;
+  width: min(760px, calc(100vw - 320px));
+  height: 360px;
+  border: 2px solid var(--figma-blue);
+  border-radius: 24px;
+  background: #fff;
+}
+
+#screening-form:has(#submit-screening:disabled)::before {
+  content: "";
+  position: fixed;
+  z-index: 1002;
+  left: calc(50% + 2px);
+  top: 302px;
+  width: 82px;
+  height: 82px;
+  border: 4px solid #d8e0e8;
+  border-top-color: #17248f;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+#screening-form:has(#submit-screening:disabled)::after {
+  content: "Анализируем показатели";
+  position: fixed;
+  z-index: 1002;
+  left: calc(50% + 120px);
+  top: 300px;
+  width: 500px;
+  color: #101010;
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 44px;
+  line-height: 52px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+#screening-form:has(#submit-screening:disabled) > .actions::after {
+  content: "ИИ-модель оценивает лабораторные данные. Это займёт несколько секунд.";
+  position: fixed;
+  z-index: 1002;
+  left: calc(50% + 120px);
+  top: 410px;
+  width: 470px;
+  color: #344054;
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+/* Loading view is produced only from CSS selectors observing the already */
+/* existing disabled submit button; request behavior stays untouched.     */
+
+/* -------------------------------------------------------------------------- */
+/* Result screen — designer card/progress language, full API output retained   */
+/* -------------------------------------------------------------------------- */
+
+.result-top + .notice,
+.result-top ~ .notice {
+  border: 1px solid #d6e3ed;
+  background: transparent;
+}
+
+.result-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.result-card {
+  min-height: 220px;
+  padding: 32px;
+  border: 2px solid var(--figma-cyan);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.result-card h3 {
+  color: #101010;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.result-card .tag,
+.tag {
+  background: rgba(13, 234, 207, 0.13);
+  color: #07356f;
+}
+
+.percent {
+  color: #101010;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 700;
+}
+
+.bar {
+  height: 8px;
+  margin: 16px 0 8px;
+  border-radius: 999px;
+  background: var(--figma-track);
+}
+
+.bar div {
+  border-radius: inherit;
+  background: var(--figma-cyan);
+}
+
+.scale {
+  color: #667085;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+#print-result {
+  color: var(--figma-deep);
+  background: var(--figma-cyan);
+  border-color: var(--figma-cyan);
+}
+
+#download-result {
+  color: var(--figma-deep);
+  background: var(--figma-cyan);
+  border-color: var(--figma-cyan);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tables, trends, patient/doctor screens                                      */
+/* -------------------------------------------------------------------------- */
+
+.table-wrap {
+  border: 1px solid #c9ddea;
+  border-radius: 16px;
+  background: #fff;
+}
+
+table {
+  background: #fff;
+}
+
+th,
+td {
+  padding: 16px;
+  border-bottom-color: #e2ebf2;
+}
+
+th {
+  color: #475467;
+  background: #f5faff;
+  font-weight: 600;
+}
+
+.tabs {
+  background: #dfeef8;
+  border-radius: 12px;
+}
+
+.tabs .active {
+  color: #07356f;
+  box-shadow: none;
+}
+
+.chart-card {
+  padding: 24px;
+  border: 1px solid #9fc3d8;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.notice {
+  padding: 24px 32px;
+  border: 1px solid #d4e3ed;
+  border-radius: 16px;
+  background: transparent;
+  color: #07356f;
+}
+
+.empty {
+  padding: 64px 32px;
+  border: 1px solid #c9ddea;
+  border-radius: 20px;
+  background: #fff;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Auth / profile                                                              */
+/* -------------------------------------------------------------------------- */
+
+.auth-layout {
+  gap: 32px;
+}
+
+.auth-art {
+  border-radius: 24px;
+  background: #15161b;
+}
+
+.auth-art img {
+  object-fit: contain;
+}
+
+.auth-form {
+  max-width: 500px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Footer — designer spec: #075BAE, 1280 inner container                       */
+/* -------------------------------------------------------------------------- */
+
+.footer {
+  min-height: 320px;
+  padding: 48px 0 24px;
+  background: var(--figma-blue);
+  color: #fff;
+}
+
+.footer-grid {
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer img {
+  width: 190px;
+  filter: brightness(0) invert(1);
+}
+
+.footer p {
+  max-width: 380px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.footer h3 {
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.footer a {
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.footer-bottom {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top-color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsive                                                                  */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 1120px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  nav {
+    gap: 18px;
+  }
+
+  nav .btn.small {
+    min-width: 150px;
+  }
+
+  .hero {
+    margin-left: -40px;
+    margin-right: -40px;
+    grid-template-columns: 1fr 0.85fr;
+  }
+
+  .hero-copy {
+    padding-left: 64px;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+    line-height: 60px;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .topbar {
+    height: 76px;
+  }
+
+  .brand img {
+    width: 150px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    top: 76px;
+    background: var(--figma-blue);
+  }
+
+  nav a,
+  nav a:hover,
+  nav a.active {
+    color: #fff;
+  }
+
+  nav > a:not(.btn) {
+    padding: 10px 0;
+  }
+
+  nav > a:not(.btn)::after {
+    bottom: 4px;
+  }
+
+  .hero {
+    margin-left: -24px;
+    margin-right: -24px;
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-copy {
+    padding: 56px 32px 12px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+    line-height: 54px;
+  }
+
+  .hero-art {
+    min-height: 420px;
+  }
+
+  .hero-art img {
+    height: 440px;
+    object-position: center bottom;
+    transform: none;
+  }
+
+  .step:not(:last-child)::after {
+    display: none;
+  }
+
+  .side-card {
+    position: static;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .side-card h3 {
+    text-align: left;
+  }
+
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main:has(#submit-screening:disabled)::before {
+    inset: 76px 0 0;
+    background: var(--figma-bg);
+  }
+
+  main:has(#submit-screening:disabled)::after {
+    left: 24px;
+    top: 180px;
+    width: calc(100vw - 48px);
+    height: 360px;
+  }
+
+  #screening-form:has(#submit-screening:disabled)::before {
+    left: calc(50% - 41px);
+    top: 230px;
+  }
+
+  #screening-form:has(#submit-screening:disabled)::after {
+    left: 54px;
+    top: 350px;
+    width: calc(100vw - 108px);
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  #screening-form:has(#submit-screening:disabled) > .actions::after {
+    left: 54px;
+    top: 450px;
+    width: calc(100vw - 108px);
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+
+  .hero-copy {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+    line-height: 46px;
+  }
+
+  .hero .btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .steps {
+    padding: 28px 24px;
+  }
+
+  .about {
+    padding: 24px;
+  }
+
+  .form-section {
+    padding: 24px;
+  }
+
+  .fields {
+    grid-template-columns: 1fr;
+  }
+
+  #screening-form > .actions {
+    flex-direction: column;
+  }
+
+  #screening-form > .actions .btn {
+    width: 100%;
+  }
+
+  .footer {
+    min-height: 0;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+}
+/* === MEDITRON FIGMA STYLE-ONLY OVERRIDES: END === */

@@ -224,3 +224,5 @@ meditron.db
 *.db
 *.sqlite
 *.sqlite3
+
+frontend/.figma_style_backup_*
