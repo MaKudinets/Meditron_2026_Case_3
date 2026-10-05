@@ -8,6 +8,10 @@ from api.database.models import (
     User,
 )
 
+from api.resources.lab_catalog import (
+    get_lab_catalog_metadata,
+)
+
 
 class PatientProfileNotFoundError(
     ValueError
@@ -25,6 +29,225 @@ class PatientRoleRequiredError(
     ValueError
 ):
     pass
+
+
+# ============================================================
+# LAB METADATA
+# ============================================================
+
+
+def _metadata_to_dict(
+    metadata,
+) -> dict:
+    """
+    Приводит metadata к обычному dict.
+
+    В текущем API metadata уже приходит как dict,
+    но эта проверка делает функцию безопаснее,
+    если в будущем сюда попадёт Pydantic-модель.
+    """
+
+    if metadata is None:
+        return {}
+
+    if isinstance(
+        metadata,
+        dict,
+    ):
+        return metadata
+
+    if hasattr(
+        metadata,
+        "model_dump",
+    ):
+        return metadata.model_dump(
+            mode="json"
+        )
+
+    return {}
+
+
+def _clean_unit(
+    unit,
+):
+    """
+    Пустую строку единицы измерения
+    считаем отсутствующим значением.
+    """
+
+    if unit is None:
+        return None
+
+    if isinstance(
+        unit,
+        str,
+    ):
+        unit = unit.strip()
+
+        if not unit:
+            return None
+
+    return unit
+
+
+def resolve_lab_metadata(
+    *,
+    feature: str,
+    metadata,
+    reference_source: str | None,
+) -> dict:
+    """
+    Определяет metadata, которые будут сохранены в LabValue.
+
+    Приоритет:
+
+    1. metadata конкретного анализа / файла;
+    2. backend-каталог;
+    3. None.
+
+    Важно:
+    - данные лаборатории не перезаписываются каталогом;
+    - диагностические пороги ML/expert system здесь
+      не используются;
+    - функция никак не участвует в ML inference.
+    """
+
+    incoming = _metadata_to_dict(
+        metadata
+    )
+
+    catalog = (
+        get_lab_catalog_metadata(
+            feature
+        )
+    )
+
+    # ========================================================
+    # UNIT
+    # ========================================================
+
+    incoming_unit = _clean_unit(
+        incoming.get(
+            "unit"
+        )
+    )
+
+    catalog_unit = _clean_unit(
+        catalog.get(
+            "unit"
+        )
+    )
+
+    unit = (
+        incoming_unit
+        if incoming_unit is not None
+        else catalog_unit
+    )
+
+    # ========================================================
+    # REFERENCE
+    # ========================================================
+
+    incoming_low = incoming.get(
+        "reference_low"
+    )
+
+    incoming_high = incoming.get(
+        "reference_high"
+    )
+
+    reference_text = incoming.get(
+        "reference_text"
+    )
+
+    has_incoming_reference = (
+        incoming_low is not None
+        or incoming_high is not None
+    )
+
+    has_reference_text = (
+        isinstance(
+            reference_text,
+            str,
+        )
+        and bool(
+            reference_text.strip()
+        )
+    )
+
+    # Если лаборатория передала распознанный
+    # референс, используем только его.
+    if has_incoming_reference:
+
+        return {
+            "unit": unit,
+
+            "reference_low": (
+                incoming_low
+            ),
+
+            "reference_high": (
+                incoming_high
+            ),
+
+            "reference_source": (
+                reference_source
+            ),
+        }
+
+    # Если в лабораторном файле был текст
+    # референса, но парсер не смог безопасно
+    # превратить его в числа, не подменяем
+    # лабораторный диапазон внутренним.
+    if has_reference_text:
+
+        return {
+            "unit": unit,
+
+            "reference_low": None,
+
+            "reference_high": None,
+
+            "reference_source": (
+                reference_source
+            ),
+        }
+
+    catalog_low = catalog.get(
+        "reference_low"
+    )
+
+    catalog_high = catalog.get(
+        "reference_high"
+    )
+
+    has_catalog_reference = (
+        catalog_low is not None
+        or catalog_high is not None
+    )
+
+    return {
+        "unit": unit,
+
+        "reference_low": (
+            catalog_low
+        ),
+
+        "reference_high": (
+            catalog_high
+        ),
+
+        "reference_source": (
+            "internal_catalog"
+            if has_catalog_reference
+            else None
+        ),
+    }
+
+
+# ============================================================
+# PATIENT PROFILE
+# ============================================================
 
 
 def get_patient_profile(
@@ -59,6 +282,11 @@ def get_patient_profile(
     return profile
 
 
+# ============================================================
+# LAB VALUES
+# ============================================================
+
+
 def save_lab_values(
     db: Session,
     *,
@@ -76,6 +304,9 @@ def save_lab_values(
     - reference_low
     - reference_high
     - reference_source
+
+    Если metadata отсутствуют,
+    используется безопасный backend fallback.
     """
 
     ignored_features = {
@@ -112,16 +343,14 @@ def save_lab_values(
             {},
         )
 
-        unit = metadata.get(
-            "unit"
-        )
-
-        reference_low = metadata.get(
-            "reference_low"
-        )
-
-        reference_high = metadata.get(
-            "reference_high"
+        resolved_metadata = (
+            resolve_lab_metadata(
+                feature=feature,
+                metadata=metadata,
+                reference_source=(
+                    reference_source
+                ),
+            )
         )
 
         lab_value = LabValue(
@@ -131,26 +360,39 @@ def save_lab_values(
 
             value=numeric_value,
 
-            unit=unit,
+            unit=(
+                resolved_metadata[
+                    "unit"
+                ]
+            ),
 
             reference_low=(
-                reference_low
+                resolved_metadata[
+                    "reference_low"
+                ]
             ),
 
             reference_high=(
-                reference_high
+                resolved_metadata[
+                    "reference_high"
+                ]
             ),
 
             reference_source=(
-                reference_source
-                if metadata
-                else None
+                resolved_metadata[
+                    "reference_source"
+                ]
             ),
         )
 
         db.add(
             lab_value
         )
+
+
+# ============================================================
+# SAVE SCREENING
+# ============================================================
 
 
 def save_screening(
@@ -266,6 +508,11 @@ def save_screening(
         raise
 
     return screening
+
+
+# ============================================================
+# HISTORY
+# ============================================================
 
 
 def get_screening_history(
