@@ -1,0 +1,7 @@
+numpy
+pandas
+scikit-learn
+joblib
+catboost
+durable_rules==2.0.28
+pytest

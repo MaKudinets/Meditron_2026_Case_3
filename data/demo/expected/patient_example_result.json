@@ -1,0 +1,214 @@
+{
+  "screening_id": "f1e2ab1916da4557bd93801c23a1a23a",
+  "patient_id": "DEMO-P001",
+  "prediction": {
+    "anemia": true,
+    "anemia_class": "iron_deficiency_anemia",
+    "deficiency_cause": "iron_deficiency"
+  },
+  "confidence": {
+    "basis": "weakest_positive_branch",
+    "limiting_target": "B6_deficiency",
+    "certainty": 0.6502,
+    "level": "moderate"
+  },
+  "deficiencies": {
+    "iron_deficiency": {
+      "probability": 1.0,
+      "prediction": true,
+      "threshold": 0.4100000000000002,
+      "rule_score": 0.95,
+      "rule_state": "supports",
+      "confidence": {
+        "selected_state": "positive",
+        "certainty": 1.0,
+        "level": "high"
+      }
+    },
+    "B12_deficiency": {
+      "probability": 0.0001,
+      "prediction": false,
+      "threshold": 0.2600000000000001,
+      "rule_score": 0.5,
+      "rule_state": "unknown",
+      "confidence": {
+        "selected_state": "negative",
+        "certainty": 0.9999,
+        "level": "high"
+      }
+    },
+    "folate_deficiency": {
+      "probability": 0.0007,
+      "prediction": false,
+      "threshold": 0.4500000000000003,
+      "rule_score": 0.1,
+      "rule_state": "against",
+      "confidence": {
+        "selected_state": "negative",
+        "certainty": 0.9993,
+        "level": "high"
+      }
+    },
+    "B6_deficiency": {
+      "probability": 0.6502,
+      "prediction": true,
+      "threshold": 0.4500000000000003,
+      "rule_score": 0.5,
+      "rule_state": "unknown",
+      "confidence": {
+        "selected_state": "positive",
+        "certainty": 0.6502,
+        "level": "moderate"
+      }
+    },
+    "copper_deficiency": {
+      "probability": 0.0009,
+      "prediction": false,
+      "threshold": 0.18,
+      "rule_score": 0.5,
+      "rule_state": "unknown",
+      "confidence": {
+        "selected_state": "negative",
+        "certainty": 0.9991,
+        "level": "high"
+      }
+    },
+    "inflammation_anemia": {
+      "probability": 0.0002,
+      "prediction": false,
+      "threshold": 0.3800000000000002,
+      "rule_score": 0.3,
+      "rule_state": "unknown",
+      "confidence": {
+        "selected_state": "negative",
+        "certainty": 0.9998,
+        "level": "high"
+      }
+    }
+  },
+  "data_quality": {
+    "coverage": 1.0,
+    "used_features": [
+      "age_years",
+      "sex",
+      "hemoglobin",
+      "RBC",
+      "hematocrit",
+      "MCV",
+      "MCH",
+      "MCHC",
+      "RDW",
+      "platelets",
+      "WBC",
+      "reticulocytes",
+      "ferritin",
+      "serum_iron",
+      "transferrin",
+      "TIBC",
+      "UIBC",
+      "TSAT",
+      "sTfR",
+      "Ret_He",
+      "vitamin_B12",
+      "active_B12",
+      "MMA",
+      "homocysteine",
+      "folate",
+      "vitamin_B6",
+      "copper",
+      "ceruloplasmin",
+      "CRP",
+      "ESR",
+      "creatinine",
+      "eGFR",
+      "TSH",
+      "albumin",
+      "LDH",
+      "indirect_bilirubin",
+      "haptoglobin"
+    ],
+    "missing_features": [],
+    "warnings": []
+  },
+  "evidence": [
+    {
+      "target": "anemia",
+      "feature": "hemoglobin",
+      "value": 108.0,
+      "criterion": "< 120.0 g/L",
+      "direction": "supports",
+      "strength": "hard deterministic",
+      "source_url": "https://cr.minzdrav.gov.ru/preview-cr/669_2"
+    },
+    {
+      "target": "iron_deficiency",
+      "feature": "Ret_He",
+      "value": 26.8,
+      "criterion": "< 30.6 pg",
+      "direction": "supports",
+      "strength": "strong diagnostic evidence",
+      "source_url": "https://cr.minzdrav.gov.ru/preview-cr/669_2"
+    },
+    {
+      "target": "iron_deficiency",
+      "feature": "ferritin",
+      "value": 7.2,
+      "criterion": "< 11.0 ng/mL",
+      "direction": "supports",
+      "strength": "strong evidence within iron profile",
+      "source_url": "https://cr.minzdrav.gov.ru/preview-cr/669_2"
+    },
+    {
+      "target": "iron_deficiency",
+      "feature": "serum_iron",
+      "value": 7.8,
+      "criterion": "< 10.7 umol/L",
+      "direction": "supports",
+      "strength": "moderate/supporting",
+      "source_url": "https://cr.minzdrav.gov.ru/preview-cr/669_2"
+    },
+    {
+      "target": "iron_deficiency",
+      "feature": "TSAT",
+      "value": 9.5,
+      "criterion": "< 17.8 %",
+      "direction": "supports",
+      "strength": "moderate/supporting",
+      "source_url": "https://cr.minzdrav.gov.ru/preview-cr/669_2"
+    },
+    {
+      "target": "iron_deficiency",
+      "feature": "TIBC",
+      "value": 82.0,
+      "criterion": "> 78.0 umol/L",
+      "direction": "supports",
+      "strength": "moderate/supporting",
+      "source_url": "https://cr.minzdrav.gov.ru/preview-cr/669_2"
+    },
+    {
+      "target": "B12_deficiency",
+      "feature": "vitamin_B12",
+      "value": 310.0,
+      "criterion": "< 140.0 pg/mL",
+      "direction": "unknown",
+      "strength": "insufficient to exclude functional deficiency",
+      "source_url": "https://cr.minzdrav.gov.ru/preview-cr/536_3"
+    },
+    {
+      "target": "folate_deficiency",
+      "feature": "folate",
+      "value": 8.9,
+      "criterion": "< 4.0 strong; 4.0–8.0 borderline",
+      "direction": "against",
+      "strength": "supporting negative evidence",
+      "source_url": "https://cr.minzdrav.gov.ru/preview-cr/540_3"
+    }
+  ],
+  "conflicts": [],
+  "recommended_next_tests": [],
+  "model": {
+    "bundle_name": "meditron_frozen_inference_bundle",
+    "bundle_version": "1.0"
+  },
+  "disclaimer": "Предварительная оценка по доступным данным. Результат является системой поддержки принятия решений, не является самостоятельным клиническим диагнозом и требует интерпретации врачом. Отсутствующие лабораторные показатели могут ограничивать проверку альтернативных диагностических гипотез."
+}

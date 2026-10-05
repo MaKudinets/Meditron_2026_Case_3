@@ -1,0 +1,8 @@
+target,status,available_external_evidence,use_for_external_metric,note
+anemia,DIRECT / STRONG,sex + hemoglobin,True,"Можно воспроизвести детерминированное правило анемии. Это проверяет rule layer, а не качество ML binary deficiency model."
+iron_deficiency,PROXY ONLY,ferritin + serum iron + sTfR + CBC,False,Полного независимого gold standard нет; ferritin/sTfR одновременно являются model inputs.
+B12_deficiency,NOT AVAILABLE,нет B12/MMA/active B12 в выбранном cycle,False,Не строим искусственный label.
+folate_deficiency,PROXY ONLY,serum total folate,False,"Serum folate доступен, но label на его основе будет зависеть от того же feature."
+B6_deficiency,NOT AVAILABLE,нет vitamin B6 marker,False,Не строим искусственный label.
+copper_deficiency,NOT AVAILABLE,нет copper/ceruloplasmin,False,Не строим искусственный label.
+inflammation_anemia,PROXY ONLY,hemoglobin + hs-CRP + ferritin + serum iron,False,"Можно исследовать clinical plausibility / phenotype, но не называть это независимым ground truth."

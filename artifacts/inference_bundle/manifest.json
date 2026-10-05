@@ -1,0 +1,24 @@
+{
+  "bundle_name": "meditron_frozen_inference_bundle",
+  "bundle_version": "1.0",
+  "purpose": "external validation and deployment inference",
+  "internal_dataset": "deficiency_anemia.csv",
+  "n_internal_patients": 840,
+  "n_features": 37,
+  "targets": [
+    "iron_deficiency",
+    "B12_deficiency",
+    "folate_deficiency",
+    "B6_deficiency",
+    "copper_deficiency",
+    "inflammation_anemia"
+  ],
+  "architecture": {
+    "anemia": "deterministic clinical rule",
+    "deficiency_models": "L1 + CatBoost",
+    "calibration": "Platt",
+    "ensemble_settings": "frozen from notebook 04 CSV metadata",
+    "expert_layer": "clinical_rules.py / notebook 05"
+  },
+  "important_note": "These full-data models are deployment artifacts. Internal performance must continue to be reported from the OOF evaluation in notebook 04."
+}

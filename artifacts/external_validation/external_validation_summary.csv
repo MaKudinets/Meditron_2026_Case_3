@@ -1,0 +1,8 @@
+metric,value,interpretation
+External dataset,NHANES 2021–2023,Independent public population dataset
+External patients,11933,Size of transfer/stress-test cohort
+Mapped frozen features,19/37,Schema coverage = 51.4%
+Median patient feature coverage,43.2%,Most patients have incomplete feature sets
+Patients inside internal age range,8153/11933,68.3%
+Model adaptation on NHANES,None,No training / fine-tuning / threshold tuning on external data
+External Macro-F1 / Accuracy,Not reported,No comparable independent ground truth for full task

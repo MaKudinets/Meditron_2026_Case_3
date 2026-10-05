@@ -1,0 +1,2901 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+:root {
+  --mint: #0deacf;
+  --hover: #4ce6d6;
+  --pressed: #0abba5;
+  --navy: #103648;
+  --ink: #222;
+  --muted: #516672;
+  --line: #dce5e8;
+  --paper: #f0f1f2;
+  --panel: #e3eef1;
+  --brand: #21108e;
+  --radius: 16px;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font:
+    16px/1.5 "IBM Plex Sans",
+    Arial,
+    sans-serif;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #21108e;
+  outline-offset: 4px;
+}
+.container {
+  max-width: 1440px;
+  margin: auto;
+  padding: 0 40px;
+}
+.skip {
+  position: absolute;
+  top: -100px;
+  z-index: 30;
+  background: white;
+  padding: 12px;
+}
+.skip:focus {
+  top: 0;
+}
+.topbar {
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.brand img {
+  width: 177px;
+  height: 48px;
+  object-fit: contain;
+}
+.wordmark {
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  border-left: 1px solid var(--line);
+  padding-left: 22px;
+  color: var(--navy);
+}
+nav {
+  display: flex;
+  gap: 27px;
+  align-items: center;
+  font-size: 14px;
+}
+nav a {
+  color: var(--muted);
+}
+nav a:hover,
+nav a.active {
+  color: var(--navy);
+}
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 15px 24px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--mint);
+  color: #000;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 14px;
+  line-height: 1.3;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.btn:hover {
+  background: var(--hover);
+}
+.btn:active {
+  background: var(--pressed);
+}
+.btn.secondary {
+  background: white;
+  color: var(--navy);
+  border-color: #b5c7cf;
+}
+.btn.secondary:hover {
+  background: var(--panel);
+}
+.btn.dark {
+  background: var(--navy);
+  color: white;
+}
+.btn.small {
+  padding: 10px 16px;
+  font-size: 12px;
+}
+.menu-toggle {
+  display: none;
+}
+.modebar {
+  background: #f3f8f8;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+  padding: 9px 0;
+}
+.modebar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #0abba5;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+.hero {
+  margin-top: 24px;
+  background: var(--navy);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  min-height: 600px;
+  display: grid;
+  grid-template-columns: 1.08fr 1fr;
+  color: white;
+}
+.hero-copy {
+  z-index: 2;
+  padding: 62px 0 62px 54px;
+}
+.eyebrow {
+  font:
+    12px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow:before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: currentColor;
+}
+.hero .eyebrow {
+  color: var(--mint);
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+h1 {
+  font-size: 60px;
+  font-weight: 500;
+  line-height: 1.07;
+  letter-spacing: -0.04em;
+  margin: 28px 0 24px;
+}
+h2 {
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+h3 {
+  font-size: 24px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.hero h1 span {
+  color: var(--mint);
+}
+.hero p {
+  max-width: 425px;
+  color: #d5e2e6;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+.hero .secondary {
+  color: white;
+  background: transparent;
+  border-color: #87a7b2;
+}
+.hero-art {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #fff;
+}
+.hero-art:before {
+  content: "";
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  border: 1px solid #0deacf44;
+  border-radius: 50%;
+  top: 30px;
+  left: 0;
+  box-shadow:
+    0 0 0 65px #0deacf09,
+    0 0 0 130px #0deacf05;
+}
+.hero-art img {
+  width: 100%;
+  height: 590px;
+  object-fit: contain;
+  object-position: bottom;
+  position: relative;
+}
+.hero-note {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background: #103648da;
+  border: 1px solid #4ce6d644;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.section {
+  padding: 78px 0;
+}
+.section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.section-head p {
+  max-width: 380px;
+  color: var(--muted);
+  margin: 7px 0 0;
+}
+.section-head h2 {
+  margin-bottom: 0;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.card {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: white;
+}
+.card p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background: #0deacf22;
+  color: #165260;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  font:
+    23px "IBM Plex Mono",
+    monospace;
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.step {
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+.step span {
+  color: #0a786d;
+  font:
+    14px "IBM Plex Mono",
+    monospace;
+}
+.step h3 {
+  font-size: 20px;
+  margin: 22px 0 10px;
+}
+.step p {
+  color: var(--muted);
+  font-size: 15px;
+}
+.tint {
+  background: #f4f8f9;
+}
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.about img {
+  width: 100%;
+  border-radius: 16px;
+}
+.about p {
+  color: var(--muted);
+  max-width: 520px;
+}
+.tag {
+  display: inline-flex;
+  padding: 6px 11px;
+  border-radius: 6px;
+  background: #e3f8f4;
+  color: #17554e;
+  font-size: 12px;
+}
+.faq {
+  max-width: 850px;
+  margin: auto;
+}
+.faq details {
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0;
+}
+.faq summary {
+  cursor: pointer;
+  font-weight: 500;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.faq summary:after {
+  content: "+";
+  font-size: 24px;
+  color: #155766;
+}
+.faq details[open] summary:after {
+  content: "−";
+}
+.faq p {
+  margin: 15px 40px 0 0;
+  color: var(--muted);
+}
+.page {
+  padding: 42px 0 72px;
+  min-height: 65vh;
+}
+.back {
+  color: var(--muted);
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+.page h1 {
+  font-size: 40px;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+.subtitle {
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+.workspace {
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  gap: 32px;
+  align-items: start;
+}
+.form-section {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+.form-section h3 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.form-section > p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+}
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+}
+.field label {
+  margin-bottom: 8px;
+}
+.input-wrap {
+  position: relative;
+}
+.input-wrap input {
+  padding-right: 80px;
+}
+.unit {
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  font-size: 12px;
+  color: var(--muted);
+  pointer-events: none;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #c9d5da;
+  border-radius: 6px;
+  padding: 12px 14px;
+  background: #fff;
+  color: var(--ink);
+  min-height: 48px;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #91a0a7;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #0abba5;
+  outline: 2px solid #0deacf44;
+}
+textarea {
+  resize: vertical;
+}
+.side-card {
+  padding: 24px;
+  background: #f3f8f9;
+  border-radius: 12px;
+  position: sticky;
+  top: 20px;
+}
+.side-card h3 {
+  font-size: 20px;
+}
+.side-card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+.side-card img {
+  width: 100%;
+  mix-blend-mode: multiply;
+  border-radius: 8px;
+}
+.progress {
+  height: 5px;
+  background: #dce9ec;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 12px 0 22px;
+}
+.progress > div {
+  height: 100%;
+  background: var(--mint);
+  transition: width 0.2s;
+}
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+}
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 24px 0;
+}
+.check input {
+  width: 18px;
+  min-height: 18px;
+  margin: 3px 0;
+  flex: none;
+  accent-color: #0abba5;
+}
+.notice {
+  background: var(--panel);
+  padding: 20px 24px;
+  border-radius: 10px;
+  color: var(--navy);
+  font-size: 14px;
+  display: flex;
+  gap: 16px;
+  margin: 24px 0;
+}
+.notice p {
+  margin: 0;
+}
+.error {
+  background: #fff0ef;
+  border: 1px solid #efc3be;
+  color: #9c2822;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+.result-top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.result-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 26px;
+}
+.result-card h3 {
+  font-size: 18px;
+}
+.percent {
+  font-size: 44px;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.bar {
+  height: 7px;
+  background: #e3eef1;
+  border-radius: 5px;
+  margin: 18px 0 10px;
+  overflow: hidden;
+}
+.bar div {
+  height: 100%;
+  background: #0abba5;
+}
+.scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--muted);
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+th,
+td {
+  text-align: left;
+  padding: 15px 16px;
+  border-bottom: 1px solid var(--line);
+}
+th {
+  color: var(--muted);
+  font-weight: 400;
+  background: #f4f8f9;
+}
+.table-wrap {
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 30px;
+}
+.auth-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 630px;
+}
+.auth-art {
+  background: #15161b;
+  color: white;
+  border-radius: 18px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.auth-art img {
+  max-height: 400px;
+  width: 100%;
+  object-fit: contain;
+}
+.auth-art h2 {
+  font-size: 32px;
+  margin: 0;
+}
+.auth-form {
+  width: 100%;
+  max-width: 460px;
+  margin: auto;
+  padding: 40px;
+}
+.auth-form .field {
+  margin-top: 18px;
+}
+.auth-form .btn {
+  width: 100%;
+  margin-top: 20px;
+}
+.auth-switch {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 24px;
+  color: var(--muted);
+}
+.auth-switch a {
+  text-decoration: underline;
+  color: var(--navy);
+}
+.tabs {
+  display: flex;
+  gap: 8px;
+  background: #f0f4f5;
+  padding: 5px;
+  border-radius: 8px;
+  max-width: max-content;
+  margin: 24px 0;
+}
+.tabs a {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+.tabs .active {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px #10364810;
+}
+.empty {
+  text-align: center;
+  padding: 70px 24px;
+  background: #f4f8f9;
+  border-radius: 12px;
+}
+.empty p {
+  color: var(--muted);
+}
+.chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.chart-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
+}
+.chart-card h3 {
+  font-size: 20px;
+  margin-bottom: 0;
+}
+.chart-card .legend {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+.upload {
+  border: 2px dashed #aac2ca;
+  padding: 50px 20px;
+  text-align: center;
+  border-radius: 12px;
+  background: #f6fafb;
+}
+.upload.drag {
+  border-color: #0abba5;
+  background: #e3f8f4;
+}
+.upload input {
+  max-width: 360px;
+  background: white;
+  margin-top: 20px;
+}
+.footer {
+  background: var(--navy);
+  color: white;
+  padding: 44px 0 24px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 32px;
+}
+.footer img {
+  width: 177px;
+  filter: brightness(0) invert(1);
+}
+.footer p {
+  font-size: 13px;
+  color: #b4cbd4;
+  max-width: 350px;
+  margin-top: 18px;
+}
+.footer h3 {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.footer a {
+  display: block;
+  font-size: 13px;
+  color: #d5e4e8;
+  margin: 8px 0;
+}
+.footer-bottom {
+  border-top: 1px solid #ffffff22;
+  padding-top: 24px;
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  color: #b4cbd4;
+  font-size: 12px;
+}
+.footer-bottom a {
+  margin: 0;
+}
+.loader {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #10364844;
+  border-top-color: #103648;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+#toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--navy);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px #0002;
+  z-index: 50;
+  display: none;
+  font-size: 14px;
+}
+#toast.show {
+  display: block;
+}
+.config {
+  max-width: 760px;
+}
+.config .field {
+  margin: 20px 0;
+}
+.mono {
+  font-family: "IBM Plex Mono", monospace;
+}
+.link {
+  color: #185c65;
+  text-decoration: underline;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+@media (min-width: 1441px) {
+  .hero {
+    min-height: 650px;
+  }
+  .hero-copy {
+    padding-top: 76px;
+  }
+  .hero-art img {
+    height: 650px;
+  }
+}
+@media (max-width: 1050px) {
+  nav {
+    gap: 14px;
+    font-size: 12px;
+  }
+  .wordmark {
+    display: none;
+  }
+  .hero-copy {
+    padding: 44px 0 44px 32px;
+  }
+  h1 {
+    font-size: 48px;
+  }
+  .hero {
+    min-height: 540px;
+  }
+  .hero-art img {
+    height: 540px;
+  }
+  .workspace {
+    grid-template-columns: 1fr 260px;
+  }
+  .result-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+  .topbar {
+    height: 76px;
+  }
+  .brand img {
+    width: 145px;
+  }
+  .menu-toggle {
+    display: block;
+    background: transparent;
+    border: 1px solid #bccdd3;
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: var(--navy);
+  }
+  nav {
+    display: none;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 24px;
+    z-index: 10;
+    box-shadow: 0 6px 15px #10364812;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+  nav.open {
+    display: flex;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .hero-copy {
+    padding: 36px 28px 0;
+  }
+  .hero h1 {
+    font-size: 42px;
+  }
+  .hero-art {
+    height: 350px;
+  }
+  .hero-art img {
+    height: 390px;
+  }
+  .hero-art:before {
+    left: 25%;
+    width: 300px;
+    height: 300px;
+  }
+  .hero-note {
+    right: 14px;
+    bottom: 14px;
+  }
+  .section {
+    padding: 48px 0;
+  }
+  .section-head {
+    display: block;
+  }
+  .section-head p {
+    margin-top: 16px;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .steps {
+    grid-template-columns: 1fr 1fr;
+  }
+  .about {
+    gap: 28px;
+    grid-template-columns: 1fr;
+  }
+  .about img {
+    max-height: 330px;
+    object-fit: contain;
+  }
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+  .side-card {
+    position: static;
+    order: -1;
+  }
+  .side-card img {
+    display: none;
+  }
+  .side-card p {
+    margin-bottom: 0;
+  }
+  .split {
+    grid-template-columns: 1fr;
+  }
+  .auth-layout {
+    grid-template-columns: 1fr;
+  }
+  .auth-art {
+    display: none;
+  }
+  .auth-form {
+    padding: 24px 0;
+  }
+  .footer-grid {
+    grid-template-columns: 1.5fr 1fr;
+  }
+  .footer-grid > div:last-child {
+    grid-column: 1/-1;
+  }
+  .page h1 {
+    font-size: 32px;
+  }
+  .result-top {
+    display: block;
+  }
+  .result-top > .btn {
+    margin-bottom: 24px;
+  }
+  .modebar .container {
+    align-items: flex-start;
+  }
+  .modebar a {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+  .hero-copy {
+    padding: 30px 22px 0;
+  }
+  .hero h1 {
+    font-size: 36px;
+  }
+  .hero p {
+    font-size: 16px;
+  }
+  .hero .actions .btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .hero-art {
+    height: 300px;
+  }
+  .hero-art img {
+    height: 340px;
+  }
+  .fields {
+    grid-template-columns: 1fr;
+  }
+  .form-section {
+    padding: 20px;
+  }
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+  .steps {
+    gap: 16px;
+  }
+  .step h3 {
+    font-size: 18px;
+  }
+  .section-head h2 {
+    font-size: 28px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-grid > div:first-child {
+    grid-column: 1/-1;
+  }
+  .footer-bottom {
+    display: block;
+  }
+  .footer-bottom a {
+    margin-top: 10px;
+  }
+  .modebar {
+    font-size: 11px;
+  }
+  .btn {
+    padding: 14px 18px;
+  }
+  .page {
+    padding-top: 28px;
+  }
+}
+@media print {
+  header,
+  footer,
+  .actions,
+  .back,
+  .btn,
+  .modebar,
+  #toast {
+    display: none !important;
+  }
+  .page {
+    padding: 0;
+  }
+  .container {
+    padding: 0;
+  }
+  .result-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card,
+  .result-card {
+    break-inside: avoid;
+  }
+  body {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* === MEDITRON FIGMA STYLE-ONLY OVERRIDES: START === */
+
+/* ========================================================================== */
+/* MEDITRON — FIGMA VISUAL THEME                                               */
+/* Styling-only patch. No application logic, routes, API calls or state.       */
+/* Source: Sechenov Meditron designer specs, desktop frame 1440px.             */
+/* ========================================================================== */
+
+:root {
+  --mint: #0deacf;
+  --hover: #4ce6d6;
+  --pressed: #0abba5;
+  --navy: #103648;
+  --ink: #101828;
+  --muted: #667085;
+  --line: #dce8f1;
+  --paper: #eaf5fd;
+  --panel: #ffffff;
+  --brand: #075bae;
+  --radius: 16px;
+  --figma-blue: #075bae;
+  --figma-deep: #103648;
+  --figma-cyan: #0deacf;
+  --figma-cyan-hover: #4ce6d6;
+  --figma-cyan-pressed: #0abba5;
+  --figma-bg: #eaf5fd;
+  --figma-card: #ffffff;
+  --figma-text: #101828;
+  --figma-muted: #667085;
+  --figma-stroke: #9fc3d8;
+  --figma-track: #dce8f1;
+}
+
+html {
+  background: var(--figma-bg);
+}
+
+body {
+  background: var(--figma-bg);
+  color: var(--figma-text);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+}
+
+main {
+  background: var(--figma-bg);
+}
+
+.container {
+  max-width: 1440px;
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Header — designer spec: 1440 × 92, #075BAE                                 */
+/* -------------------------------------------------------------------------- */
+
+#header {
+  background: var(--figma-blue);
+  color: #fff;
+  position: relative;
+  z-index: 20;
+}
+
+.topbar {
+  height: 92px;
+  border-bottom: 0;
+  gap: 32px;
+}
+
+.brand {
+  gap: 0;
+  min-width: 200px;
+}
+
+.brand img {
+  width: 180px;
+  height: 52px;
+  object-fit: contain;
+  object-position: left center;
+  filter: brightness(0) invert(1);
+}
+
+.wordmark {
+  display: none;
+}
+
+nav {
+  gap: 32px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+nav a,
+nav a:hover,
+nav a.active {
+  color: #fff;
+}
+
+nav > a:not(.btn) {
+  position: relative;
+  padding: 34px 0 31px;
+}
+
+nav > a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 22px;
+  height: 2px;
+  background: var(--figma-cyan);
+  transition: right 0.2s ease;
+}
+
+nav > a:not(.btn):hover::after,
+nav > a.active:not(.btn)::after {
+  right: 0;
+}
+
+nav a[href="#/profile"] {
+  padding: 8px 16px !important;
+  border: 2px solid #fff;
+  border-radius: 16px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+nav a[href="#/profile"]::after {
+  display: none;
+}
+
+nav .btn.small {
+  min-width: 180px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: var(--figma-cyan);
+  color: var(--figma-deep);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.modebar {
+  display: none;
+}
+
+.menu-toggle {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Buttons                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.btn {
+  min-height: 48px;
+  padding: 14px 24px;
+  gap: 16px;
+  border-radius: 12px;
+  background: var(--figma-cyan);
+  color: var(--figma-deep);
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.btn:hover {
+  background: var(--figma-cyan-hover);
+}
+
+.btn:active {
+  background: var(--figma-cyan-pressed);
+}
+
+.btn.secondary {
+  color: #07356f;
+  background: #fff;
+  border-color: var(--figma-blue);
+}
+
+.btn.secondary:hover {
+  background: #f6fbff;
+}
+
+.btn.dark {
+  background: var(--figma-blue);
+  color: #fff;
+}
+
+.btn.small {
+  min-height: 44px;
+  padding: 11px 18px;
+  font-size: 14px;
+}
+
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(13, 234, 207, 0.7);
+  outline-offset: 3px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Typography                                                                  */
+/* -------------------------------------------------------------------------- */
+
+h1 {
+  color: #07356f;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  color: var(--figma-deep);
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  color: var(--figma-deep);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+p {
+  line-height: 24px;
+}
+
+.subtitle {
+  color: #344054;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.eyebrow {
+  color: var(--figma-blue);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+}
+
+.eyebrow::before {
+  background: var(--figma-cyan);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Home / Hero                                                                 */
+/* -------------------------------------------------------------------------- */
+
+.hero {
+  min-height: 640px;
+  margin: 0 -64px;
+  border-radius: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(500px, 0.95fr);
+  color: #fff;
+  background:
+    linear-gradient(90deg, rgba(4, 51, 125, 0.97) 0%, rgba(4, 71, 154, 0.86) 45%, rgba(5, 91, 174, 0.48) 100%),
+    url("/assets/dna-bg.webp") center / cover no-repeat;
+}
+
+.hero-copy {
+  padding: 84px 0 72px 96px;
+  align-self: center;
+}
+
+.hero .eyebrow {
+  color: var(--figma-cyan);
+}
+
+.hero h1 {
+  max-width: 640px;
+  margin: 24px 0;
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 64px;
+  line-height: 72px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero h1 span {
+  color: var(--figma-cyan);
+}
+
+.hero p {
+  max-width: 560px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.hero .actions {
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.hero .btn {
+  min-width: 220px;
+  min-height: 56px;
+  padding: 16px 24px;
+  border-radius: 16px;
+  font-size: 16px;
+}
+
+.hero .secondary {
+  color: #fff;
+  background: transparent;
+  border: 2px solid #fff;
+}
+
+.hero .secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-art {
+  align-items: flex-end;
+  overflow: visible;
+  background: transparent;
+}
+
+.hero-art::before {
+  display: none;
+}
+
+.hero-art img {
+  width: 110%;
+  height: 640px;
+  max-width: none;
+  object-fit: contain;
+  object-position: right bottom;
+  transform: translateX(2%);
+  filter: drop-shadow(0 18px 28px rgba(3, 32, 80, 0.22));
+}
+
+.hero-note {
+  display: none;
+}
+
+/* First content section: white Figma-style cards on light-blue field */
+.hero + .section {
+  position: relative;
+  z-index: 2;
+  margin-top: -36px;
+  padding-top: 84px;
+}
+
+.section {
+  padding: 64px 0;
+}
+
+.section-head {
+  gap: 48px;
+  margin-bottom: 24px;
+}
+
+.section-head p {
+  max-width: 520px;
+  color: #344054;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.cards {
+  gap: 24px;
+}
+
+.card {
+  border: 1px solid var(--figma-stroke);
+  border-radius: 16px;
+  background: #fff;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(16, 54, 72, 0.06);
+}
+
+.card p {
+  color: #344054;
+}
+
+.cards .card {
+  min-height: 160px;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: rgba(13, 234, 207, 0.16);
+  color: var(--figma-blue);
+  font-size: 22px;
+}
+
+.tint {
+  background: var(--figma-bg);
+}
+
+.steps {
+  gap: 24px;
+  padding: 40px 48px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(16, 54, 72, 0.06);
+}
+
+.step {
+  position: relative;
+  border-top: 0;
+  padding: 0 20px 0 0;
+}
+
+.step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -6px;
+  top: 14px;
+  color: #101828;
+  font: 28px/1 "IBM Plex Sans", sans-serif;
+}
+
+.step span {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(13, 234, 207, 0.14);
+  color: var(--figma-blue);
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+}
+
+.step h3 {
+  margin-top: 16px;
+  color: #101010;
+}
+
+.step p {
+  color: #344054;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.about {
+  min-height: 400px;
+  gap: 48px;
+  padding: 40px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(16, 54, 72, 0.06);
+}
+
+.about img {
+  max-height: 370px;
+  object-fit: contain;
+  border-radius: 0;
+  mix-blend-mode: multiply;
+}
+
+.about p {
+  color: #344054;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.faq {
+  max-width: 1120px;
+}
+
+.faq details {
+  min-height: 64px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #dce8f1;
+  background: #fff;
+}
+
+.faq details:first-of-type {
+  border-radius: 16px 16px 0 0;
+}
+
+.faq details:last-of-type {
+  border-radius: 0 0 16px 16px;
+  border-bottom: 0;
+}
+
+.faq summary {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.faq summary::after {
+  color: #101010;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Generic application pages                                                  */
+/* -------------------------------------------------------------------------- */
+
+.page {
+  min-height: 70vh;
+  padding: 40px 0 72px;
+}
+
+.back {
+  margin-bottom: 24px;
+  color: #101828;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.page h1 {
+  margin-bottom: 12px;
+  color: #12335b;
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 600;
+}
+
+.result-top {
+  align-items: flex-start;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Screening form — values from Data Input specification                      */
+/* -------------------------------------------------------------------------- */
+
+.workspace {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+#screening-form {
+  width: 100%;
+  order: 0;
+}
+
+/* Preserve existing progress logic and move its visual block above the form. */
+.side-card {
+  position: static;
+  order: -1;
+  align-self: flex-end;
+  width: 350px;
+  padding: 0;
+  margin: 0 0 24px;
+  border-radius: 0;
+  background: transparent;
+}
+
+.side-card .eyebrow,
+.side-card p,
+.side-card img {
+  display: none;
+}
+
+.side-card h3 {
+  margin: 0 !important;
+  color: #667085;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.side-card .progress {
+  height: 8px;
+  margin: 8px 0 0;
+  border-radius: 999px;
+  background: var(--figma-track);
+}
+
+.progress > div {
+  background: var(--figma-cyan);
+}
+
+.form-section {
+  margin-bottom: 24px;
+  padding: 32px;
+  border: 1px solid var(--figma-blue);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.form-section h3 {
+  margin-bottom: 8px;
+  color: #07356f;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.form-section > p {
+  margin-bottom: 24px;
+  color: #667085;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.fields {
+  gap: 16px 32px;
+}
+
+.field label {
+  margin-bottom: 8px;
+  color: #101828;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+input,
+select,
+textarea {
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1px solid #438bd5;
+  border-radius: 8px;
+  background: #fff;
+  color: #101828;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.input-wrap input {
+  padding-right: 88px;
+}
+
+.unit {
+  right: 12px;
+  top: 12px;
+  color: #667085;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--figma-cyan);
+  outline: 2px solid rgba(13, 234, 207, 0.25);
+}
+
+/* Existing upload/example controls remain in the same DOM and logic. */
+.page > .result-top .actions {
+  margin-top: 0;
+}
+
+#upload-lab-file {
+  min-width: 210px;
+  color: #07356f;
+  background: #fff;
+  border-color: #438bd5;
+}
+
+#example {
+  color: #07356f;
+  background: transparent;
+  border-color: transparent;
+}
+
+#import-status .card {
+  margin-top: 24px;
+  border-color: #8bcfca;
+}
+
+.check {
+  margin: 24px 0;
+  color: #344054;
+}
+
+#screening-form > .actions {
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  margin-top: 24px;
+}
+
+#submit-screening {
+  min-width: 230px;
+  min-height: 52px;
+}
+
+#screening-form > .actions .btn.secondary {
+  min-width: 160px;
+  color: #e32222;
+  border: 2px solid #e32222;
+  background: #fff;
+}
+
+#screening-form > .actions .btn.secondary:hover {
+  background: #fff7f7;
+}
+
+/* -------------------------------------------------------------------------- */
+/* CSS-only loading composition: uses the already-existing disabled state.     */
+/* No event handler or request flow is changed.                                */
+/* -------------------------------------------------------------------------- */
+
+body:has(#submit-screening:disabled) {
+  overflow: hidden;
+}
+
+main:has(#submit-screening:disabled)::before {
+  content: "";
+  position: fixed;
+  z-index: 1000;
+  inset: 92px 0 0;
+  background:
+    url("/assets/robot-seated.webp") calc(50% - 420px) calc(50% + 130px) / 510px auto no-repeat,
+    #eaf5fd;
+}
+
+main:has(#submit-screening:disabled)::after {
+  content: "";
+  position: fixed;
+  z-index: 1001;
+  left: calc(50% - 200px);
+  top: 240px;
+  width: min(760px, calc(100vw - 320px));
+  height: 360px;
+  border: 2px solid var(--figma-blue);
+  border-radius: 24px;
+  background: #fff;
+}
+
+#screening-form:has(#submit-screening:disabled)::before {
+  content: "";
+  position: fixed;
+  z-index: 1002;
+  left: calc(50% + 2px);
+  top: 302px;
+  width: 82px;
+  height: 82px;
+  border: 4px solid #d8e0e8;
+  border-top-color: #17248f;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+#screening-form:has(#submit-screening:disabled)::after {
+  content: "Анализируем показатели";
+  position: fixed;
+  z-index: 1002;
+  left: calc(50% + 120px);
+  top: 300px;
+  width: 500px;
+  color: #101010;
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 44px;
+  line-height: 52px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+#screening-form:has(#submit-screening:disabled) > .actions::after {
+  content: "ИИ-модель оценивает лабораторные данные. Это займёт несколько секунд.";
+  position: fixed;
+  z-index: 1002;
+  left: calc(50% + 120px);
+  top: 410px;
+  width: 470px;
+  color: #344054;
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+/* Loading view is produced only from CSS selectors observing the already */
+/* existing disabled submit button; request behavior stays untouched.     */
+
+/* -------------------------------------------------------------------------- */
+/* Result screen — designer card/progress language, full API output retained   */
+/* -------------------------------------------------------------------------- */
+
+.result-top + .notice,
+.result-top ~ .notice {
+  border: 1px solid #d6e3ed;
+  background: transparent;
+}
+
+.result-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.result-card {
+  min-height: 220px;
+  padding: 32px;
+  border: 2px solid var(--figma-cyan);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.result-card h3 {
+  color: #101010;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.result-card .tag,
+.tag {
+  background: rgba(13, 234, 207, 0.13);
+  color: #07356f;
+}
+
+.percent {
+  color: #101010;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 700;
+}
+
+.bar {
+  height: 8px;
+  margin: 16px 0 8px;
+  border-radius: 999px;
+  background: var(--figma-track);
+}
+
+.bar div {
+  border-radius: inherit;
+  background: var(--figma-cyan);
+}
+
+.scale {
+  color: #667085;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+#print-result {
+  color: var(--figma-deep);
+  background: var(--figma-cyan);
+  border-color: var(--figma-cyan);
+}
+
+#download-result {
+  color: var(--figma-deep);
+  background: var(--figma-cyan);
+  border-color: var(--figma-cyan);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tables, trends, patient/doctor screens                                      */
+/* -------------------------------------------------------------------------- */
+
+.table-wrap {
+  border: 1px solid #c9ddea;
+  border-radius: 16px;
+  background: #fff;
+}
+
+table {
+  background: #fff;
+}
+
+th,
+td {
+  padding: 16px;
+  border-bottom-color: #e2ebf2;
+}
+
+th {
+  color: #475467;
+  background: #f5faff;
+  font-weight: 600;
+}
+
+.tabs {
+  background: #dfeef8;
+  border-radius: 12px;
+}
+
+.tabs .active {
+  color: #07356f;
+  box-shadow: none;
+}
+
+.chart-card {
+  padding: 24px;
+  border: 1px solid #9fc3d8;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.notice {
+  padding: 24px 32px;
+  border: 1px solid #d4e3ed;
+  border-radius: 16px;
+  background: transparent;
+  color: #07356f;
+}
+
+.empty {
+  padding: 64px 32px;
+  border: 1px solid #c9ddea;
+  border-radius: 20px;
+  background: #fff;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Auth / profile                                                              */
+/* -------------------------------------------------------------------------- */
+
+.auth-layout {
+  gap: 32px;
+}
+
+.auth-art {
+  border-radius: 24px;
+  background: #15161b;
+}
+
+.auth-art img {
+  object-fit: contain;
+}
+
+.auth-form {
+  max-width: 500px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Footer — designer spec: #075BAE, 1280 inner container                       */
+/* -------------------------------------------------------------------------- */
+
+.footer {
+  min-height: 320px;
+  padding: 48px 0 24px;
+  background: var(--figma-blue);
+  color: #fff;
+}
+
+.footer-grid {
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer img {
+  width: 190px;
+  filter: brightness(0) invert(1);
+}
+
+.footer p {
+  max-width: 380px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.footer h3 {
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.footer a {
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.footer-bottom {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top-color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsive                                                                  */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 1120px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  nav {
+    gap: 18px;
+  }
+
+  nav .btn.small {
+    min-width: 150px;
+  }
+
+  .hero {
+    margin-left: -40px;
+    margin-right: -40px;
+    grid-template-columns: 1fr 0.85fr;
+  }
+
+  .hero-copy {
+    padding-left: 64px;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+    line-height: 60px;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .topbar {
+    height: 76px;
+  }
+
+  .brand img {
+    width: 150px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    top: 76px;
+    background: var(--figma-blue);
+  }
+
+  nav a,
+  nav a:hover,
+  nav a.active {
+    color: #fff;
+  }
+
+  nav > a:not(.btn) {
+    padding: 10px 0;
+  }
+
+  nav > a:not(.btn)::after {
+    bottom: 4px;
+  }
+
+  .hero {
+    margin-left: -24px;
+    margin-right: -24px;
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-copy {
+    padding: 56px 32px 12px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+    line-height: 54px;
+  }
+
+  .hero-art {
+    min-height: 420px;
+  }
+
+  .hero-art img {
+    height: 440px;
+    object-position: center bottom;
+    transform: none;
+  }
+
+  .step:not(:last-child)::after {
+    display: none;
+  }
+
+  .side-card {
+    position: static;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .side-card h3 {
+    text-align: left;
+  }
+
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main:has(#submit-screening:disabled)::before {
+    inset: 76px 0 0;
+    background: var(--figma-bg);
+  }
+
+  main:has(#submit-screening:disabled)::after {
+    left: 24px;
+    top: 180px;
+    width: calc(100vw - 48px);
+    height: 360px;
+  }
+
+  #screening-form:has(#submit-screening:disabled)::before {
+    left: calc(50% - 41px);
+    top: 230px;
+  }
+
+  #screening-form:has(#submit-screening:disabled)::after {
+    left: 54px;
+    top: 350px;
+    width: calc(100vw - 108px);
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  #screening-form:has(#submit-screening:disabled) > .actions::after {
+    left: 54px;
+    top: 450px;
+    width: calc(100vw - 108px);
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+
+  .hero-copy {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+    line-height: 46px;
+  }
+
+  .hero .btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .steps {
+    padding: 28px 24px;
+  }
+
+  .about {
+    padding: 24px;
+  }
+
+  .form-section {
+    padding: 24px;
+  }
+
+  .fields {
+    grid-template-columns: 1fr;
+  }
+
+  #screening-form > .actions {
+    flex-direction: column;
+  }
+
+  #screening-form > .actions .btn {
+    width: 100%;
+  }
+
+  .footer {
+    min-height: 0;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+}
+/* === MEDITRON FIGMA STYLE-ONLY OVERRIDES: END === */
+
+/* === MEDITRON FINAL FIGMA HOME + SPACING: START === */
+:root {
+  --content-max: 1312px;
+  --content-gutter: clamp(24px, 4.45vw, 64px);
+}
+
+/* Global centering: keep application pages away from viewport edges. */
+.container {
+  width: 100%;
+  max-width: calc(var(--content-max) + (var(--content-gutter) * 2));
+  margin-inline: auto;
+  padding-left: var(--content-gutter);
+  padding-right: var(--content-gutter);
+}
+
+.page {
+  max-width: calc(var(--content-max) + (var(--content-gutter) * 2));
+  margin-inline: auto;
+  padding-top: 48px;
+  padding-bottom: 80px;
+}
+
+/* Correct Sechenov assets supplied by the designer. */
+.brand img {
+  width: 175px;
+  height: 47px;
+  filter: none;
+}
+
+.footer-grid > div:first-child img {
+  width: 193px;
+  max-height: 256px;
+  object-fit: contain;
+  object-position: left top;
+  filter: none;
+}
+
+/* Home uses its own Figma layout while preserving the same routes/actions. */
+.home-page {
+  width: 100%;
+  overflow: hidden;
+  background: #eaf5fd;
+  color: #101828;
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+}
+
+.home-hero {
+  position: relative;
+  min-height: 670px;
+  background:
+    linear-gradient(90deg, rgba(3, 44, 113, 0.96) 0%, rgba(4, 69, 151, 0.84) 50%, rgba(5, 99, 190, 0.28) 100%),
+    url("/assets/dna-bg.webp") center / cover no-repeat;
+  color: #fff;
+}
+
+.home-hero__inner {
+  position: relative;
+  width: min(var(--content-max), calc(100% - (var(--content-gutter) * 2)));
+  min-height: 670px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(480px, 1.08fr);
+  align-items: center;
+}
+
+.home-hero__copy {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+  padding: 72px 0 88px;
+}
+
+.home-logo-word {
+  margin: 0 0 20px;
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(56px, 5vw, 78px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+.home-logo-word span { color: #0deacf; }
+.home-hero__copy h2 {
+  max-width: 610px;
+  margin: 0 0 56px;
+  color: #fff;
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 600;
+}
+.home-hero__copy > p {
+  max-width: 610px;
+  margin-bottom: 32px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 26px;
+}
+.home-hero__actions { display: flex; gap: 24px; flex-wrap: wrap; }
+.home-hero__actions .btn {
+  min-width: 232px;
+  min-height: 64px;
+  border-radius: 14px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 17px;
+}
+.home-hero__actions .secondary { background: transparent; color: #fff; border: 2px solid #fff; }
+.home-hero__robot {
+  position: absolute;
+  z-index: 1;
+  right: -58px;
+  bottom: 0;
+  width: min(760px, 58vw);
+  max-height: 650px;
+  object-fit: contain;
+  object-position: right bottom;
+}
+
+.home-shell-card {
+  width: min(var(--content-max), calc(100% - (var(--content-gutter) * 2)));
+  margin-inline: auto;
+  background: #fff;
+  border-radius: 24px;
+}
+
+.home-benefits {
+  position: relative;
+  z-index: 3;
+  margin-top: -30px;
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  box-shadow: 0 3px 14px rgba(16, 54, 72, 0.04);
+}
+.home-benefits article,
+.home-mini-card {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+  gap: 20px;
+}
+.home-benefits h3,
+.home-mini-card h3 { margin: 0 0 8px; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 18px; }
+.home-benefits p,
+.home-mini-card p { margin: 0; color: #101010; font-size: 14px; line-height: 20px; }
+.home-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(13, 234, 207, 0.18);
+}
+.home-icon--soft { background: #edf2f8; }
+.home-icon--light { background: rgba(255,255,255,.78); }
+.home-icon-img { width: 28px; height: 28px; object-fit: contain; }
+.home-icon--light .home-icon-img { width: 30px; height: 30px; }
+
+.home-section {
+  width: min(var(--content-max), calc(100% - (var(--content-gutter) * 2)));
+  margin-inline: auto;
+  padding: 72px 0 0;
+}
+.home-section__title {
+  margin: 0 0 40px 80px;
+  color: #101010;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 700;
+}
+.home-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.home-mini-card { min-height: 136px; padding: 22px 24px; background: #fff; border-radius: 16px; }
+
+.home-how { padding-top: 64px; }
+.home-how__card {
+  padding: 34px 36px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+}
+.home-how__step { text-align: center; }
+.home-how__step .home-icon { margin: 0 auto 14px; }
+.home-how__step h3 { margin: 0 0 4px; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 16px; line-height: 21px; }
+.home-how__step p { margin: 0; color: #101010; font-size: 13px; line-height: 18px; }
+.home-arrow { color: #101010; font-size: 44px; line-height: 1; font-weight: 300; }
+
+.home-about {
+  position: relative;
+  margin-top: 64px;
+  min-height: 650px;
+  padding: 96px 70px 170px;
+  overflow: hidden;
+}
+.home-about__copy { position: relative; z-index: 2; max-width: 520px; }
+.home-about__copy h2 { margin: 0 0 40px; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 32px; line-height: 40px; }
+.home-about__copy h3 { max-width: 500px; margin: 0 0 24px; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 22px; line-height: 31px; }
+.home-about__copy p { max-width: 520px; margin: 0; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 16px; line-height: 24px; }
+.home-about > img {
+  position: absolute;
+  z-index: 1;
+  right: 50px;
+  bottom: 116px;
+  width: min(520px, 42vw);
+  max-height: 520px;
+  object-fit: contain;
+  object-position: right bottom;
+}
+.home-about__features {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 150px;
+  padding: 20px 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 28px;
+  background: #0deacf;
+  border: 2px solid #101010;
+  border-radius: 28px;
+}
+.home-about__features article { text-align: center; }
+.home-about__features .home-icon { width: 56px; height: 56px; margin: 0 auto 10px; }
+.home-about__features h3 { margin: 0 0 4px; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 16px; line-height: 21px; }
+.home-about__features p { margin: 0 auto; max-width: 220px; color: #101010; font-size: 13px; line-height: 17px; }
+
+.home-faq {
+  margin-top: 64px;
+  margin-bottom: 64px;
+  padding: 56px 80px 64px;
+}
+.home-faq > h2 { margin: 0 0 28px; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 22px; line-height: 30px; }
+.home-faq .faq { max-width: none; }
+.home-faq .faq details { padding: 22px 0; border-bottom: 1px solid #d7dde5; border-radius: 0; background: transparent; }
+.home-faq .faq summary { padding-right: 32px; color: #101010; font-size: 16px; font-weight: 600; }
+.home-faq .faq details p { max-width: 1000px; margin: 18px 0 0; color: #344054; }
+
+/* Login: center the artwork and keep designer typography. */
+.auth-layout { align-items: stretch; }
+.auth-art { position: relative; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; overflow: hidden; }
+.auth-art img {
+  display: block;
+  width: min(520px, 88%);
+  max-height: 500px;
+  margin: 18px auto 26px;
+  object-fit: contain;
+  object-position: center center;
+}
+.auth-art h2 { font-family: "IBM Plex Mono", monospace; }
+.privacy-check { align-items: flex-start; margin: 14px 0; }
+.privacy-check input { margin-top: 3px; }
+
+/* Profile and doctor pages: avoid edge-sticking on wide displays. */
+.page > .cards,
+.page > .actions,
+.page > .tabs,
+.page > .result-top,
+.page > section,
+.page > #doctor-preview,
+.page > #doctor-batch-result,
+.page > #doctor-patient-detail {
+  max-width: 100%;
+}
+
+@media (max-width: 980px) {
+  .home-hero__inner { grid-template-columns: 1fr; min-height: 720px; }
+  .home-hero__copy { padding-bottom: 330px; }
+  .home-hero__robot { width: 600px; max-width: 92vw; right: -60px; }
+  .home-benefits, .home-why-grid { grid-template-columns: 1fr; }
+  .home-how__card { grid-template-columns: 1fr; }
+  .home-arrow { transform: rotate(90deg); justify-self: center; }
+  .home-about { padding: 64px 40px 500px; }
+  .home-about > img { right: 50%; transform: translateX(50%); bottom: 145px; width: 480px; max-width: 90%; }
+  .home-about__features { grid-template-columns: 1fr 1fr 1fr; }
+  .home-section__title { margin-left: 0; }
+}
+
+@media (max-width: 700px) {
+  :root { --content-gutter: 20px; }
+  .home-hero { min-height: 680px; }
+  .home-hero__inner { min-height: 680px; }
+  .home-hero__copy { padding: 48px 0 300px; }
+  .home-logo-word { font-size: 46px; }
+  .home-hero__copy h2 { margin-bottom: 28px; font-size: 22px; line-height: 29px; }
+  .home-hero__copy > p { font-size: 16px; line-height: 23px; }
+  .home-hero__actions .btn { width: 100%; min-width: 0; }
+  .home-benefits { margin-top: -20px; padding: 24px; gap: 24px; }
+  .home-section { padding-top: 48px; }
+  .home-section__title { margin-bottom: 24px; font-size: 24px; }
+  .home-mini-card { grid-template-columns: 56px 1fr; }
+  .home-icon { width: 56px; height: 56px; }
+  .home-about { padding: 48px 24px 490px; }
+  .home-about__features { min-height: 330px; grid-template-columns: 1fr; gap: 14px; padding: 18px 24px; }
+  .home-about > img { bottom: 300px; }
+  .home-faq { padding: 40px 24px; }
+}
+/* === MEDITRON FINAL FIGMA HOME + SPACING: END === */
+
+/* === MEDITRON VISUAL POLISH V3.1: START === */
+/* Meditron visual polish v3.1 — presentation only */
+
+/* -------------------------------------------------------------------------- */
+/* Home icon palette — pastel circles, same white SVG icons from the design.  */
+/* -------------------------------------------------------------------------- */
+.home-benefits article:nth-child(1) .home-icon,
+.home-why-grid article:nth-child(2) .home-icon,
+.home-how__step:nth-of-type(2) .home-icon {
+  background: #cbeaf8;
+}
+.home-benefits article:nth-child(2) .home-icon,
+.home-why-grid article:nth-child(1) .home-icon,
+.home-how__step:nth-of-type(1) .home-icon {
+  background: #f2cfdd;
+}
+.home-benefits article:nth-child(3) .home-icon,
+.home-why-grid article:nth-child(3) .home-icon,
+.home-how__step:nth-of-type(3) .home-icon {
+  background: #cfe9d8;
+}
+.home-how__step:nth-of-type(4) .home-icon {
+  background: #d7dcf5;
+}
+.home-about__features article:nth-child(1) .home-icon { background: #f2cfdd; }
+.home-about__features article:nth-child(2) .home-icon { background: #cbeaf8; }
+.home-about__features article:nth-child(3) .home-icon { background: #cfe9d8; }
+
+/* -------------------------------------------------------------------------- */
+/* About — keep robot in the designer's right-hand zone, cropped by strip.    */
+/* -------------------------------------------------------------------------- */
+.home-about > img {
+  right: 72px;
+  bottom: 148px;
+  width: min(470px, 38vw);
+  max-height: 470px;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Login artwork/title contrast.                                               */
+/* -------------------------------------------------------------------------- */
+.auth-art h2 {
+  color: #dff7ff;
+}
+.auth-art > div:last-child p {
+  color: #c9e2ec !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Loading composition.                                                       */
+/* Keep the white card to the right of the robot on desktop.                  */
+/* Positions share the same viewport anchor, so heading/description stay      */
+/* aligned with the card instead of drifting or overlapping the spinner.       */
+/* -------------------------------------------------------------------------- */
+main:has(#submit-screening:disabled)::after {
+  left: calc(50% - 180px);
+  top: 238px;
+  width: min(760px, calc(100vw - 400px));
+  height: 360px;
+  transform: none;
+}
+
+#screening-form:has(#submit-screening:disabled)::before {
+  left: calc(50% - 88px);
+  top: 302px;
+  transform: none;
+}
+
+#screening-form:has(#submit-screening:disabled)::after {
+  left: calc(50% + 34px);
+  top: 307px;
+  width: min(520px, calc(50vw - 70px));
+  transform: none;
+  text-align: left;
+  font-size: clamp(34px, 3vw, 44px);
+  line-height: 1.15;
+}
+
+#screening-form:has(#submit-screening:disabled) > .actions::after {
+  left: calc(50% + 34px);
+  top: 405px;
+  width: min(500px, calc(50vw - 90px));
+  transform: none;
+  text-align: left;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Hover/active feedback. Existing functional handlers are untouched.          */
+/* -------------------------------------------------------------------------- */
+.btn,
+button,
+.card[href],
+.tabs a,
+.back,
+.link,
+.home-faq summary {
+  transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease,
+    border-color .16s ease, filter .16s ease, color .16s ease, opacity .16s ease;
+}
+
+.btn:hover:not(:disabled),
+button:hover:not(:disabled),
+.card[href]:hover,
+.tabs a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(7, 91, 174, .12);
+}
+
+.btn:active:not(:disabled),
+button:active:not(:disabled),
+.card[href]:active,
+.tabs a:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 9px rgba(7, 91, 174, .10);
+}
+
+.back:hover,
+.link:hover,
+.home-faq summary:hover {
+  color: #075bae;
+}
+
+.home-hero__actions .secondary:hover {
+  background: rgba(255,255,255,.10);
+  border-color: #fff;
+}
+
+/* Tablet: loading card becomes centered; text stacks below spinner. */
+@media (max-width: 1100px) {
+  main:has(#submit-screening:disabled)::before {
+    background:
+      url("/assets/robot-seated.webp") center calc(100% + 120px) / 430px auto no-repeat,
+      #eaf5fd;
+  }
+
+  main:has(#submit-screening:disabled)::after {
+    left: 50%;
+    top: 190px;
+    width: min(760px, calc(100vw - 80px));
+    height: 410px;
+    transform: translateX(-50%);
+  }
+
+  #screening-form:has(#submit-screening:disabled)::before {
+    left: 50%;
+    top: 238px;
+    transform: translateX(-50%);
+  }
+
+  #screening-form:has(#submit-screening:disabled)::after {
+    left: 50%;
+    top: 342px;
+    width: min(650px, calc(100vw - 140px));
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  #screening-form:has(#submit-screening:disabled) > .actions::after {
+    left: 50%;
+    top: 420px;
+    width: min(590px, calc(100vw - 160px));
+    transform: translateX(-50%);
+    text-align: center;
+  }
+}
+
+@media (max-width: 980px) {
+  .home-about > img {
+    right: 50%;
+    bottom: 145px;
+    width: 440px;
+    max-width: 88%;
+    transform: translateX(50%);
+  }
+}
+
+@media (max-width: 700px) {
+  /* v2 reserves a taller feature strip on phones; keep the robot above it. */
+  .home-about > img {
+    right: 50%;
+    bottom: 300px;
+    width: min(420px, 90vw);
+    max-width: 90%;
+    transform: translateX(50%);
+  }
+
+  main:has(#submit-screening:disabled)::after {
+    top: 140px;
+    width: calc(100vw - 32px);
+    height: 410px;
+  }
+
+  #screening-form:has(#submit-screening:disabled)::before {
+    top: 190px;
+  }
+
+  #screening-form:has(#submit-screening:disabled)::after {
+    top: 292px;
+    width: calc(100vw - 64px);
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  #screening-form:has(#submit-screening:disabled) > .actions::after {
+    top: 380px;
+    width: calc(100vw - 72px);
+  }
+}
+
+
+/* ===== FINAL VISUAL TWEAKS ===== */
+
+/* Страница входа: светло-голубой фон вокруг робота */
+.auth-art {
+  background: #EAF5FD !important;
+}
+
+/* Текст на левой части login должен остаться читаемым */
+.auth-art h2 {
+  color: #103648;
+}
+
+.auth-art p {
+  color: #4A6172 !important;
+}
+
+.auth-art .eyebrow {
+  color: #075BAE;
+}
+
+/* Главная: нижний блок "Гибридная ML-система / Быстрый результат / Научная база" */
+.home-feature-strip,
+.about-features,
+.about-strip,
+.service-features {
+  background: #EAF5FD !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Если рамка висит на внутреннем контейнере */
+.home-feature-strip > *,
+.about-features > *,
+.about-strip > *,
+.service-features > * {
+  border-color: transparent !important;
+}
+
+.auth-art p {
+  color: #344054 !important;
+}
+
+/* Главная: блок преимуществ в секции "О сервисе" */
+.home-about__features {
+  background: #075BAE !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* На случай если чёрная рамка висит на отдельных карточках */
+.home-about__features article {
+  background: #075BAE !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.home-about__features h3,
+.home-about__features p {
+  color: #FFFFFF !important;
+}
+
+/* === MEDITRON VISUAL POLISH V3.1: END === */
+
+

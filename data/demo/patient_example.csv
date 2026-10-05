@@ -1,0 +1,2 @@
+patient_id,age_years,sex,hemoglobin,RBC,hematocrit,MCV,MCH,MCHC,RDW,platelets,WBC,reticulocytes,ferritin,serum_iron,transferrin,TIBC,UIBC,TSAT,sTfR,Ret_He,vitamin_B12,active_B12,MMA,homocysteine,folate,vitamin_B6,copper,ceruloplasmin,CRP,ESR,creatinine,eGFR,TSH,albumin,LDH,indirect_bilirubin,haptoglobin
+DEMO-P001,34,F,108,4.25,34.1,78.5,25.4,315,16.8,355,6.4,1.1,7.2,7.8,3.6,82,74.2,9.5,2.3,26.8,310,72,0.18,11.2,8.9,18.5,16.4,0.28,2.1,12,72,96,2.4,43,175,7.5,1.1

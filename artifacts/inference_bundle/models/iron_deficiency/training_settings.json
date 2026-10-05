@@ -1,0 +1,14 @@
+{
+  "target": "iron_deficiency",
+  "final_l1_C": 1.0,
+  "outer_fold_C_values": [
+    1.0,
+    1.0,
+    1.0,
+    0.31622776601683794,
+    1.0
+  ],
+  "n_internal_patients": 840,
+  "positive_n": 290,
+  "negative_n": 550
+}

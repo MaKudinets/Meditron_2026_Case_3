@@ -1,0 +1,22 @@
+{
+  "anemia": {
+    "female_hb_lt": 120.0,
+    "male_hb_lt": 130.0
+  },
+  "iron": {
+    "serum_iron_low": 10.7,
+    "tibc_low": 46.0,
+    "tibc_high": 78.0,
+    "tsat_low": 17.8,
+    "ferritin_low": 11.0,
+    "ferritin_support": 30.0,
+    "ret_he_low": 30.6
+  },
+  "b12": {
+    "deficiency_lt": 140.0
+  },
+  "folate": {
+    "deficiency_lt": 4.0,
+    "borderline_high": 8.0
+  }
+}

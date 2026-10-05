@@ -1,0 +1,20 @@
+internal_feature,nhanes_variable,source_file,nhanes_unit,internal_unit,conversion
+age_years,RIDAGEYR,DEMO_L,years,years,identity
+sex,RIAGENDR,DEMO_L,"1=Male, 2=Female",M/F,"1->M, 2->F"
+hemoglobin,LBXHGB,CBC_L,g/dL,g/L,x10
+RBC,LBXRBCSI,CBC_L,million cells/uL,million cells/uL,identity
+hematocrit,LBXHCT,CBC_L,%,%,identity
+MCV,LBXMCVSI,CBC_L,fL,fL,identity
+MCH,LBXMCHSI,CBC_L,pg,pg,identity
+MCHC,LBXMC,CBC_L,g/dL,g/L,x10
+RDW,LBXRDW,CBC_L,%,%,identity
+platelets,LBXPLTSI,CBC_L,1000 cells/uL,10^9/L,numerically identical
+WBC,LBXWBCSI,CBC_L,1000 cells/uL,10^9/L,numerically identical
+ferritin,LBXFER,FERTIN_L,ng/mL,ng/mL,identity
+serum_iron,LBDSIRSI,BIOPRO_L,umol/L,umol/L,identity
+sTfR,LBXTFR,TFR_L,mg/L,mg/L,identity
+folate,LBDFOT,FOLFMS_L,ng/mL,ng/mL,identity
+CRP,LBXHSCRP,HSCRP_L,mg/L,mg/L,identity
+creatinine,LBDSCRSI,BIOPRO_L,umol/L,umol/L,identity
+albumin,LBXSAL,BIOPRO_L,g/dL,g/L,x10
+LDH,LBXSLDSI,BIOPRO_L,U/L,U/L,identity

@@ -1,0 +1,59 @@
+# =========================
+# API / SERVER
+# =========================
+
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
+
+
+# =========================
+# PYDANTIC / VALIDATION
+# =========================
+
+pydantic[email]
+pydantic-settings
+
+
+# =========================
+# DATABASE
+# =========================
+
+sqlalchemy
+
+
+# =========================
+# AUTH / SECURITY
+# =========================
+
+pwdlib[argon2]
+
+
+# =========================
+# FILE IMPORT / EXPORT
+# =========================
+
+pandas
+openpyxl
+pypdf
+reportlab
+
+
+# =========================
+# ML / DATA
+# =========================
+
+numpy
+scikit-learn==1.7.2
+joblib
+catboost
+torch
+
+
+# =========================
+# TESTS / HTTP
+# =========================
+
+pytest
+httpx

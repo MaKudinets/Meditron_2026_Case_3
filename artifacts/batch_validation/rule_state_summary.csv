@@ -1,0 +1,14 @@
+target,rule_state,n
+B12_deficiency,supports,62
+B12_deficiency,unknown,778
+B6_deficiency,unknown,840
+copper_deficiency,unknown,840
+folate_deficiency,against,178
+folate_deficiency,supports,130
+folate_deficiency,unknown,532
+inflammation_anemia,against,320
+inflammation_anemia,supports,92
+inflammation_anemia,unknown,428
+iron_deficiency,against,409
+iron_deficiency,supports,154
+iron_deficiency,unknown,277

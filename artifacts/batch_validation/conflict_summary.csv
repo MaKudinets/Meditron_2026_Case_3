@@ -1,0 +1,5 @@
+target,type,n
+inflammation_anemia,ml_negative_rule_positive,39
+iron_deficiency,ml_positive_rule_negative,23
+folate_deficiency,ml_negative_rule_positive,14
+iron_deficiency,ml_negative_rule_positive,12

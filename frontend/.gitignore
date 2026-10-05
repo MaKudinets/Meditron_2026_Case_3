@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.local
+.env.*.local
+
+
+# Local frontend design backups
+frontend/.figma_style_backup_*/
+frontend/.figma_visual_v*_backup_*/
