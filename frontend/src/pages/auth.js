@@ -42,21 +42,21 @@ function authLayout(
         </div>
 
         <img
-          src="assets/robot-login.webp"
+          src="assets/robot-login.png"
           alt="Робот Meditron за ноутбуком"
         >
 
         <div>
           <h2>
-            Ваше здоровье.<br>
+            <span style="color:#0DEACF;">Ваше здоровье.</span><br>
             Ваша история.
           </h2>
 
           <p
             style="
-              color:#b4cbd4;
-              margin-top:18px
-            "
+            color:#344054;
+            margin-top:18px
+          "
           >
             Результаты обследований
             и динамика показателей
@@ -188,20 +188,33 @@ export function auth(
               </select>
             </div>
 
-            <label class="check">
+            <label class="check privacy-check">
               <input
                 type="checkbox"
                 required
               >
 
               <span>
-                Я ознакомился с
+                Я ознакомился и соглашаюсь с
                 <a
                   class="link"
-                  href="#/privacy"
+                  href="/privacy-policy.pdf"
+                  target="_blank"
+                  rel="noopener"
                 >
-                  условиями обработки данных
+                  Политикой конфиденциальности
                 </a>.
+              </span>
+            </label>
+
+            <label class="check privacy-check">
+              <input
+                type="checkbox"
+                required
+              >
+
+              <span>
+                Я даю отдельное согласие на обработку результатов лабораторных анализов и сведений о состоянии здоровья для выполнения скрининга.
               </span>
             </label>
           `

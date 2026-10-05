@@ -48,13 +48,13 @@ function errorText(
 }
 function shell(route) {
   document.querySelector("#header").innerHTML =
-    `<div class="container topbar"><a class="brand" href="#/" aria-label="Meditron — главная"><img src="assets/sechenov.svg" alt="Сеченовский университет"><span class="wordmark">meditron<span style="color:#0abba5">.</span></span></a><button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">Меню ☰</button><nav aria-label="Основная навигация"><a href="#/about" class="${route === "about" ? "active" : ""}">О сервисе</a><a href="#/how">Как это работает</a><a href="#/history" class="${route === "history" ? "active" : ""}">История</a><a href="#/profile">${currentUser ? "Мой кабинет" : "Войти"}</a><a href="#/screening" class="btn small">Начать скрининг <span>↗</span></a></nav></div><div class="modebar"><div class="container"><span><i class="dot"></i>${cfg.mode === "demo" ? "Демонстрационный режим · используются тестовые ответы" : "Подключение к API · результаты предоставляет сервер"}</span><a href="#/connection" class="link">${cfg.mode === "demo" ? "Настроить API" : "Подключение"}</a></div></div>`;
+    `<div class="container topbar"><a class="brand" href="#/" aria-label="Meditron — главная"><img src="assets/sechenov-logo-horizontal.svg" alt="Сеченовский университет"><span class="wordmark">meditron<span style="color:#0abba5">.</span></span></a><button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">Меню ☰</button><nav aria-label="Основная навигация"><a href="#/about" class="${route === "about" ? "active" : ""}">О сервисе</a><a href="#/how">Как это работает</a><a href="#/history" class="${route === "history" ? "active" : ""}">История</a><a href="#/profile">${currentUser ? "Мой кабинет" : "Войти"}</a><a href="#/screening" class="btn small">Начать скрининг <span>↗</span></a></nav></div><div class="modebar"><div class="container"><span><i class="dot"></i>${cfg.mode === "demo" ? "Демонстрационный режим · используются тестовые ответы" : "Подключение к API · результаты предоставляет сервер"}</span><a href="#/connection" class="link">${cfg.mode === "demo" ? "Настроить API" : "Подключение"}</a></div></div>`;
   document.querySelector(".menu-toggle").onclick = (e) => {
     const open = document.querySelector("nav").classList.toggle("open");
     e.currentTarget.setAttribute("aria-expanded", String(open));
   };
   document.querySelector("#footer").innerHTML =
-    `<div class="footer"><div class="container"><div class="footer-grid"><div><a href="#/"><img src="assets/sechenov.svg" alt="Сеченовский университет"></a><p>Meditron — проект хакатона.<br>ИИ-скрининг латентных дефицитных состояний по лабораторным данным.</p></div><div><h3>Навигация</h3><a href="#/about">О сервисе</a><a href="#/how">Как это работает</a><a href="#/screening">Новый скрининг</a><a href="#/doctor">Для врача</a></div><div><h3>Личный кабинет</h3><a href="#/history">История анализов</a><a href="#/trends">Динамика показателей</a><a href="#/privacy">Обработка данных</a><a href="#/connection">Подключение API</a></div></div><div class="footer-bottom"><span>© 2026 Meditron · Скрининг не заменяет консультацию врача</span><a href="https://design.sechenov.ru/color-medicine" target="_blank" rel="noopener">Дизайн-система Сеченовского университета ↗</a></div></div></div>`;
+    `<div class="footer"><div class="container"><div class="footer-grid"><div><a href="#/"><img src="assets/sechenov-logo-vertical.svg" alt="Сеченовский университет"></a></div><div><h3>Навигация</h3><a href="#/about">О сервисе</a><a href="#/how">Как это работает</a><a href="#/screening">Новый скрининг</a><a href="#/doctor">Для врача</a></div><div><h3>Личный кабинет</h3><a href="#/history">История анализов</a><a href="#/trends">Динамика показателей</a><a href="#/privacy">Обработка данных</a><a href="#/connection">Подключение API</a></div></div><div class="footer-bottom"><span>© 2026 Meditron · Скрининг не заменяет консультацию врача</span><a href="https://design.sechenov.ru/color-medicine" target="_blank" rel="noopener">Дизайн-система Сеченовского университета ↗</a></div></div></div>`;
 }
 const medicalNotice = () =>
   `<div class="notice"><span aria-hidden="true">ⓘ</span><p><strong>Это скрининг, а не диагноз.</strong><br>Результат помогает обратить внимание на возможные дефицитные состояния. Для интерпретации анализов обратитесь к врачу.</p></div>`;
@@ -90,24 +90,20 @@ function steps() {
 function faq() {
   return [
     [
-      "Является ли результат диагнозом?",
-      "Нет. Это результат автоматизированного скрининга. Он не заменяет оценку врача и не используется для самостоятельного назначения лечения.",
+      "Являются ли результаты диагнозом?",
+      "Нет. Результаты сервиса носят информационный и скрининговый характер и не являются медицинским диагнозом. Сервис помогает выявить возможные признаки дефицитных состояний и обратить внимание на показатели, которые могут требовать дополнительной оценки. Для постановки диагноза и интерпретации результатов необходимо обратиться к врачу.",
     ],
     [
-      "Нужно ли заполнять все показатели?",
-      "Нет. Введите доступные данные. Пустые поля не превращаются в нули; достаточность данных оценивает сервер.",
+      "Какие данные используются?",
+      "Для анализа используются предоставленные пользователем результаты лабораторных исследований и другие данные, предусмотренные формой скрининга. Сервис анализирует их совокупно с помощью модели машинного обучения и алгоритмов оценки показателей.",
     ],
     [
-      "Что означает процент в результате?",
-      "Это значение, которое вернула модель. Без отдельной проверки калибровки оно не является подтверждённой вероятностью заболевания.",
+      "Какие показатели нужно указать?",
+      "Укажите доступные показатели лабораторных анализов, представленные в форме. Обязательные для расчёта поля будут отмечены отдельно. Значения следует переносить из результатов лабораторного исследования вместе с указанными единицами измерения. Если какого-либо необязательного показателя нет, его можно оставить незаполненным.",
     ],
     [
-      "Как используются мои данные?",
-      "В демонстрационном режиме данные существуют в памяти текущей страницы. При подключении API они отправляются указанному серверу; условия хранения определяет ваш бэкенд.",
-    ],
-    [
-      "Можно ли загрузить файл?",
-      "Врач может предварительно просмотреть CSV. Пакетная отправка подключается после согласования маршрута и формата с командой API.",
+      "Сколько это стоит?",
+      "В рамках текущей версии Meditron сервис предоставляется бесплатно. Платёжные данные для прохождения скрининга не требуются.",
     ],
   ]
     .map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`)

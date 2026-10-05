@@ -2320,3 +2320,582 @@ th {
   }
 }
 /* === MEDITRON FIGMA STYLE-ONLY OVERRIDES: END === */
+
+/* === MEDITRON FINAL FIGMA HOME + SPACING: START === */
+:root {
+  --content-max: 1312px;
+  --content-gutter: clamp(24px, 4.45vw, 64px);
+}
+
+/* Global centering: keep application pages away from viewport edges. */
+.container {
+  width: 100%;
+  max-width: calc(var(--content-max) + (var(--content-gutter) * 2));
+  margin-inline: auto;
+  padding-left: var(--content-gutter);
+  padding-right: var(--content-gutter);
+}
+
+.page {
+  max-width: calc(var(--content-max) + (var(--content-gutter) * 2));
+  margin-inline: auto;
+  padding-top: 48px;
+  padding-bottom: 80px;
+}
+
+/* Correct Sechenov assets supplied by the designer. */
+.brand img {
+  width: 175px;
+  height: 47px;
+  filter: none;
+}
+
+.footer-grid > div:first-child img {
+  width: 193px;
+  max-height: 256px;
+  object-fit: contain;
+  object-position: left top;
+  filter: none;
+}
+
+/* Home uses its own Figma layout while preserving the same routes/actions. */
+.home-page {
+  width: 100%;
+  overflow: hidden;
+  background: #eaf5fd;
+  color: #101828;
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+}
+
+.home-hero {
+  position: relative;
+  min-height: 670px;
+  background:
+    linear-gradient(90deg, rgba(3, 44, 113, 0.96) 0%, rgba(4, 69, 151, 0.84) 50%, rgba(5, 99, 190, 0.28) 100%),
+    url("/assets/dna-bg.webp") center / cover no-repeat;
+  color: #fff;
+}
+
+.home-hero__inner {
+  position: relative;
+  width: min(var(--content-max), calc(100% - (var(--content-gutter) * 2)));
+  min-height: 670px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(480px, 1.08fr);
+  align-items: center;
+}
+
+.home-hero__copy {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+  padding: 72px 0 88px;
+}
+
+.home-logo-word {
+  margin: 0 0 20px;
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(56px, 5vw, 78px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+.home-logo-word span { color: #0deacf; }
+.home-hero__copy h2 {
+  max-width: 610px;
+  margin: 0 0 56px;
+  color: #fff;
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 600;
+}
+.home-hero__copy > p {
+  max-width: 610px;
+  margin-bottom: 32px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 26px;
+}
+.home-hero__actions { display: flex; gap: 24px; flex-wrap: wrap; }
+.home-hero__actions .btn {
+  min-width: 232px;
+  min-height: 64px;
+  border-radius: 14px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 17px;
+}
+.home-hero__actions .secondary { background: transparent; color: #fff; border: 2px solid #fff; }
+.home-hero__robot {
+  position: absolute;
+  z-index: 1;
+  right: -58px;
+  bottom: 0;
+  width: min(760px, 58vw);
+  max-height: 650px;
+  object-fit: contain;
+  object-position: right bottom;
+}
+
+.home-shell-card {
+  width: min(var(--content-max), calc(100% - (var(--content-gutter) * 2)));
+  margin-inline: auto;
+  background: #fff;
+  border-radius: 24px;
+}
+
+.home-benefits {
+  position: relative;
+  z-index: 3;
+  margin-top: -30px;
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  box-shadow: 0 3px 14px rgba(16, 54, 72, 0.04);
+}
+.home-benefits article,
+.home-mini-card {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+  gap: 20px;
+}
+.home-benefits h3,
+.home-mini-card h3 { margin: 0 0 8px; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 18px; }
+.home-benefits p,
+.home-mini-card p { margin: 0; color: #101010; font-size: 14px; line-height: 20px; }
+.home-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(13, 234, 207, 0.18);
+}
+.home-icon--soft { background: #edf2f8; }
+.home-icon--light { background: rgba(255,255,255,.78); }
+.home-icon-img { width: 28px; height: 28px; object-fit: contain; }
+.home-icon--light .home-icon-img { width: 30px; height: 30px; }
+
+.home-section {
+  width: min(var(--content-max), calc(100% - (var(--content-gutter) * 2)));
+  margin-inline: auto;
+  padding: 72px 0 0;
+}
+.home-section__title {
+  margin: 0 0 40px 80px;
+  color: #101010;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 700;
+}
+.home-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.home-mini-card { min-height: 136px; padding: 22px 24px; background: #fff; border-radius: 16px; }
+
+.home-how { padding-top: 64px; }
+.home-how__card {
+  padding: 34px 36px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+}
+.home-how__step { text-align: center; }
+.home-how__step .home-icon { margin: 0 auto 14px; }
+.home-how__step h3 { margin: 0 0 4px; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 16px; line-height: 21px; }
+.home-how__step p { margin: 0; color: #101010; font-size: 13px; line-height: 18px; }
+.home-arrow { color: #101010; font-size: 44px; line-height: 1; font-weight: 300; }
+
+.home-about {
+  position: relative;
+  margin-top: 64px;
+  min-height: 650px;
+  padding: 96px 70px 170px;
+  overflow: hidden;
+}
+.home-about__copy { position: relative; z-index: 2; max-width: 520px; }
+.home-about__copy h2 { margin: 0 0 40px; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 32px; line-height: 40px; }
+.home-about__copy h3 { max-width: 500px; margin: 0 0 24px; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 22px; line-height: 31px; }
+.home-about__copy p { max-width: 520px; margin: 0; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 16px; line-height: 24px; }
+.home-about > img {
+  position: absolute;
+  z-index: 1;
+  right: 50px;
+  bottom: 116px;
+  width: min(520px, 42vw);
+  max-height: 520px;
+  object-fit: contain;
+  object-position: right bottom;
+}
+.home-about__features {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 150px;
+  padding: 20px 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 28px;
+  background: #0deacf;
+  border: 2px solid #101010;
+  border-radius: 28px;
+}
+.home-about__features article { text-align: center; }
+.home-about__features .home-icon { width: 56px; height: 56px; margin: 0 auto 10px; }
+.home-about__features h3 { margin: 0 0 4px; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 16px; line-height: 21px; }
+.home-about__features p { margin: 0 auto; max-width: 220px; color: #101010; font-size: 13px; line-height: 17px; }
+
+.home-faq {
+  margin-top: 64px;
+  margin-bottom: 64px;
+  padding: 56px 80px 64px;
+}
+.home-faq > h2 { margin: 0 0 28px; color: #101010; font-family: "IBM Plex Mono", monospace; font-size: 22px; line-height: 30px; }
+.home-faq .faq { max-width: none; }
+.home-faq .faq details { padding: 22px 0; border-bottom: 1px solid #d7dde5; border-radius: 0; background: transparent; }
+.home-faq .faq summary { padding-right: 32px; color: #101010; font-size: 16px; font-weight: 600; }
+.home-faq .faq details p { max-width: 1000px; margin: 18px 0 0; color: #344054; }
+
+/* Login: center the artwork and keep designer typography. */
+.auth-layout { align-items: stretch; }
+.auth-art { position: relative; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; overflow: hidden; }
+.auth-art img {
+  display: block;
+  width: min(520px, 88%);
+  max-height: 500px;
+  margin: 18px auto 26px;
+  object-fit: contain;
+  object-position: center center;
+}
+.auth-art h2 { font-family: "IBM Plex Mono", monospace; }
+.privacy-check { align-items: flex-start; margin: 14px 0; }
+.privacy-check input { margin-top: 3px; }
+
+/* Profile and doctor pages: avoid edge-sticking on wide displays. */
+.page > .cards,
+.page > .actions,
+.page > .tabs,
+.page > .result-top,
+.page > section,
+.page > #doctor-preview,
+.page > #doctor-batch-result,
+.page > #doctor-patient-detail {
+  max-width: 100%;
+}
+
+@media (max-width: 980px) {
+  .home-hero__inner { grid-template-columns: 1fr; min-height: 720px; }
+  .home-hero__copy { padding-bottom: 330px; }
+  .home-hero__robot { width: 600px; max-width: 92vw; right: -60px; }
+  .home-benefits, .home-why-grid { grid-template-columns: 1fr; }
+  .home-how__card { grid-template-columns: 1fr; }
+  .home-arrow { transform: rotate(90deg); justify-self: center; }
+  .home-about { padding: 64px 40px 500px; }
+  .home-about > img { right: 50%; transform: translateX(50%); bottom: 145px; width: 480px; max-width: 90%; }
+  .home-about__features { grid-template-columns: 1fr 1fr 1fr; }
+  .home-section__title { margin-left: 0; }
+}
+
+@media (max-width: 700px) {
+  :root { --content-gutter: 20px; }
+  .home-hero { min-height: 680px; }
+  .home-hero__inner { min-height: 680px; }
+  .home-hero__copy { padding: 48px 0 300px; }
+  .home-logo-word { font-size: 46px; }
+  .home-hero__copy h2 { margin-bottom: 28px; font-size: 22px; line-height: 29px; }
+  .home-hero__copy > p { font-size: 16px; line-height: 23px; }
+  .home-hero__actions .btn { width: 100%; min-width: 0; }
+  .home-benefits { margin-top: -20px; padding: 24px; gap: 24px; }
+  .home-section { padding-top: 48px; }
+  .home-section__title { margin-bottom: 24px; font-size: 24px; }
+  .home-mini-card { grid-template-columns: 56px 1fr; }
+  .home-icon { width: 56px; height: 56px; }
+  .home-about { padding: 48px 24px 490px; }
+  .home-about__features { min-height: 330px; grid-template-columns: 1fr; gap: 14px; padding: 18px 24px; }
+  .home-about > img { bottom: 300px; }
+  .home-faq { padding: 40px 24px; }
+}
+/* === MEDITRON FINAL FIGMA HOME + SPACING: END === */
+
+/* === MEDITRON VISUAL POLISH V3.1: START === */
+/* Meditron visual polish v3.1 — presentation only */
+
+/* -------------------------------------------------------------------------- */
+/* Home icon palette — pastel circles, same white SVG icons from the design.  */
+/* -------------------------------------------------------------------------- */
+.home-benefits article:nth-child(1) .home-icon,
+.home-why-grid article:nth-child(2) .home-icon,
+.home-how__step:nth-of-type(2) .home-icon {
+  background: #cbeaf8;
+}
+.home-benefits article:nth-child(2) .home-icon,
+.home-why-grid article:nth-child(1) .home-icon,
+.home-how__step:nth-of-type(1) .home-icon {
+  background: #f2cfdd;
+}
+.home-benefits article:nth-child(3) .home-icon,
+.home-why-grid article:nth-child(3) .home-icon,
+.home-how__step:nth-of-type(3) .home-icon {
+  background: #cfe9d8;
+}
+.home-how__step:nth-of-type(4) .home-icon {
+  background: #d7dcf5;
+}
+.home-about__features article:nth-child(1) .home-icon { background: #f2cfdd; }
+.home-about__features article:nth-child(2) .home-icon { background: #cbeaf8; }
+.home-about__features article:nth-child(3) .home-icon { background: #cfe9d8; }
+
+/* -------------------------------------------------------------------------- */
+/* About — keep robot in the designer's right-hand zone, cropped by strip.    */
+/* -------------------------------------------------------------------------- */
+.home-about > img {
+  right: 72px;
+  bottom: 148px;
+  width: min(470px, 38vw);
+  max-height: 470px;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Login artwork/title contrast.                                               */
+/* -------------------------------------------------------------------------- */
+.auth-art h2 {
+  color: #dff7ff;
+}
+.auth-art > div:last-child p {
+  color: #c9e2ec !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Loading composition.                                                       */
+/* Keep the white card to the right of the robot on desktop.                  */
+/* Positions share the same viewport anchor, so heading/description stay      */
+/* aligned with the card instead of drifting or overlapping the spinner.       */
+/* -------------------------------------------------------------------------- */
+main:has(#submit-screening:disabled)::after {
+  left: calc(50% - 180px);
+  top: 238px;
+  width: min(760px, calc(100vw - 400px));
+  height: 360px;
+  transform: none;
+}
+
+#screening-form:has(#submit-screening:disabled)::before {
+  left: calc(50% - 88px);
+  top: 302px;
+  transform: none;
+}
+
+#screening-form:has(#submit-screening:disabled)::after {
+  left: calc(50% + 34px);
+  top: 307px;
+  width: min(520px, calc(50vw - 70px));
+  transform: none;
+  text-align: left;
+  font-size: clamp(34px, 3vw, 44px);
+  line-height: 1.15;
+}
+
+#screening-form:has(#submit-screening:disabled) > .actions::after {
+  left: calc(50% + 34px);
+  top: 405px;
+  width: min(500px, calc(50vw - 90px));
+  transform: none;
+  text-align: left;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Hover/active feedback. Existing functional handlers are untouched.          */
+/* -------------------------------------------------------------------------- */
+.btn,
+button,
+.card[href],
+.tabs a,
+.back,
+.link,
+.home-faq summary {
+  transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease,
+    border-color .16s ease, filter .16s ease, color .16s ease, opacity .16s ease;
+}
+
+.btn:hover:not(:disabled),
+button:hover:not(:disabled),
+.card[href]:hover,
+.tabs a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(7, 91, 174, .12);
+}
+
+.btn:active:not(:disabled),
+button:active:not(:disabled),
+.card[href]:active,
+.tabs a:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 9px rgba(7, 91, 174, .10);
+}
+
+.back:hover,
+.link:hover,
+.home-faq summary:hover {
+  color: #075bae;
+}
+
+.home-hero__actions .secondary:hover {
+  background: rgba(255,255,255,.10);
+  border-color: #fff;
+}
+
+/* Tablet: loading card becomes centered; text stacks below spinner. */
+@media (max-width: 1100px) {
+  main:has(#submit-screening:disabled)::before {
+    background:
+      url("/assets/robot-seated.webp") center calc(100% + 120px) / 430px auto no-repeat,
+      #eaf5fd;
+  }
+
+  main:has(#submit-screening:disabled)::after {
+    left: 50%;
+    top: 190px;
+    width: min(760px, calc(100vw - 80px));
+    height: 410px;
+    transform: translateX(-50%);
+  }
+
+  #screening-form:has(#submit-screening:disabled)::before {
+    left: 50%;
+    top: 238px;
+    transform: translateX(-50%);
+  }
+
+  #screening-form:has(#submit-screening:disabled)::after {
+    left: 50%;
+    top: 342px;
+    width: min(650px, calc(100vw - 140px));
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  #screening-form:has(#submit-screening:disabled) > .actions::after {
+    left: 50%;
+    top: 420px;
+    width: min(590px, calc(100vw - 160px));
+    transform: translateX(-50%);
+    text-align: center;
+  }
+}
+
+@media (max-width: 980px) {
+  .home-about > img {
+    right: 50%;
+    bottom: 145px;
+    width: 440px;
+    max-width: 88%;
+    transform: translateX(50%);
+  }
+}
+
+@media (max-width: 700px) {
+  /* v2 reserves a taller feature strip on phones; keep the robot above it. */
+  .home-about > img {
+    right: 50%;
+    bottom: 300px;
+    width: min(420px, 90vw);
+    max-width: 90%;
+    transform: translateX(50%);
+  }
+
+  main:has(#submit-screening:disabled)::after {
+    top: 140px;
+    width: calc(100vw - 32px);
+    height: 410px;
+  }
+
+  #screening-form:has(#submit-screening:disabled)::before {
+    top: 190px;
+  }
+
+  #screening-form:has(#submit-screening:disabled)::after {
+    top: 292px;
+    width: calc(100vw - 64px);
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  #screening-form:has(#submit-screening:disabled) > .actions::after {
+    top: 380px;
+    width: calc(100vw - 72px);
+  }
+}
+
+
+/* ===== FINAL VISUAL TWEAKS ===== */
+
+/* Страница входа: светло-голубой фон вокруг робота */
+.auth-art {
+  background: #EAF5FD !important;
+}
+
+/* Текст на левой части login должен остаться читаемым */
+.auth-art h2 {
+  color: #103648;
+}
+
+.auth-art p {
+  color: #4A6172 !important;
+}
+
+.auth-art .eyebrow {
+  color: #075BAE;
+}
+
+/* Главная: нижний блок "Гибридная ML-система / Быстрый результат / Научная база" */
+.home-feature-strip,
+.about-features,
+.about-strip,
+.service-features {
+  background: #EAF5FD !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Если рамка висит на внутреннем контейнере */
+.home-feature-strip > *,
+.about-features > *,
+.about-strip > *,
+.service-features > * {
+  border-color: transparent !important;
+}
+
+.auth-art p {
+  color: #344054 !important;
+}
+
+/* Главная: блок преимуществ в секции "О сервисе" */
+.home-about__features {
+  background: #075BAE !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* На случай если чёрная рамка висит на отдельных карточках */
+.home-about__features article {
+  background: #075BAE !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.home-about__features h3,
+.home-about__features p {
+  color: #FFFFFF !important;
+}
+
+/* === MEDITRON VISUAL POLISH V3.1: END === */
+
+
