@@ -40,6 +40,43 @@
 ```text
 Meditron_2026_Case_3/
 ├── api/
+│   ├── database/
+│   │   ├── __init__.py
+│   │   ├── database.py
+│   │   ├── init_db.py
+│   │   └── models.py
+│   ├── resources/
+│   │   ├── __init__.py
+│   │   └── lab_groups.py
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── doctor_imports.py
+│   │   ├── doctor_patients.py
+│   │   ├── doctor_screenings.py
+│   │   ├── health.py
+│   │   ├── history.py
+│   │   ├── imports.py
+│   │   ├── metadata.py
+│   │   ├── screenings.py
+│   │   └── trends.py
+│   ├── schemas/
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── common.py
+│   │   ├── doctor_imports.py
+│   │   ├── doctor_patients.py
+│   │   ├── doctor_screenings.py
+│   │   ├── history.py
+│   │   ├── imports.py
+│   │   ├── request.py
+│   │   ├── response.py
+│   │   └── trends.py
+│   ├── security/
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── passwords.py
+│   │   └── tokens.py
 │   └── main.py
 ├── ml/
 │   └── inference/
@@ -84,19 +121,34 @@ Meditron_2026_Case_3/
 
 ## 4. Компоненты системы
 
-### 4.1 Backend API
+### 4.1 Backend API (модуль `api/`)
 
-- Точка входа: `api/main.py`
-- Фреймворк: FastAPI
-- ASGI-сервер: Uvicorn
-- Порт: `8000`
-- Назначение:
-  - приём запросов от frontend;
-  - валидация входных данных;
-  - вызов ML-инференса;
-  - вызов экспертного движка;
-  - сохранение/чтение данных из SQLite;
-  - возврат предсказаний и объяснений.
+Модуль `api/` реализует слой взаимодействия с клиентом и внутренней логикой приложения. Он разделён на следующие подпакеты:
+
+- **`api/main.py`** — точка входа приложения FastAPI. Инициализация приложения, подключение роутеров, настройка CORS и middleware.
+- **`api/routes/`** — HTTP-эндпоинты, сгруппированные по доменным областям:
+  - `auth.py` — аутентификация и авторизация;
+  - `doctor_imports.py`, `doctor_patients.py`, `doctor_screenings.py` — функциональность для врачей;
+  - `health.py` — проверка работоспособности сервиса;
+  - `history.py` — история приёмов/анализов;
+  - `imports.py` — импорт данных;
+  - `metadata.py` — метаданные системы;
+  - `screenings.py` — скрининги;
+  - `trends.py` — тренды и динамика показателей.
+- **`api/schemas/`** — Pydantic-схемы для валидации входящих запросов и формирования ответов:
+  - `auth.py`, `common.py`, `request.py`, `response.py`;
+  - схемы для врачей и импортов: `doctor_imports.py`, `doctor_patients.py`, `doctor_screenings.py`;
+  - схемы для истории, импортов и трендов: `history.py`, `imports.py`, `trends.py`.
+- **`api/database/`** — работа с базой данных:
+  - `database.py` — подключение и сессия SQLAlchemy;
+  - `init_db.py` — инициализация схемы БД;
+  - `models.py` — ORM-модели.
+- **`api/security/`** — безопасность:
+  - `auth.py` — логика аутентификации;
+  - `passwords.py` — хэширование и проверка паролей;
+  - `tokens.py` — генерация и валидация JWT-токенов.
+- **`api/resources/`** — статические справочники и вспомогательные данные:
+  - `lab_groups.py` — группы лабораторных показателей.
 
 ### 4.2 ML Inference
 
@@ -145,14 +197,15 @@ Meditron_2026_Case_3/
 
 1. Пользователь отправляет запрос через frontend.
 2. Frontend обращается к backend API по `VITE_API_URL`.
-3. `api/main.py` принимает запрос и валидирует признаки.
-4. API вызывает `ml/inference/predictor.py`.
-5. Predictor загружает нужные артефакты из `notebooks/artifacts/baselines/` или `notebooks/artifacts/hierarchical/`.
-6. Predictor возвращает ML-предсказание.
-7. API передаёт результат в `expert/engine.py`.
-8. Expert engine применяет правила, калибровку и формирует объяснение.
-9. API сохраняет необходимые данные в SQLite.
-10. API возвращает frontend структурированный ответ: предсказание + объяснение + метаданные.
+3. `api/main.py` принимает запрос, валидирует его через схемы в `api/schemas/`.
+4. Роутер из `api/routes/` обрабатывает запрос и при необходимости обращается к `api/database/` или `api/security/`.
+5. API вызывает `ml/inference/predictor.py`.
+6. Predictor загружает нужные артефакты из `notebooks/artifacts/baselines/` или `notebooks/artifacts/hierarchical/`.
+7. Predictor возвращает ML-предсказание.
+8. API передаёт результат в `expert/engine.py`.
+9. Expert engine применяет правила, калибровку и формирует объяснение.
+10. API сохраняет необходимые данные в SQLite.
+11. API возвращает frontend структурированный ответ: предсказание + объяснение + метаданные.
 
 ---
 
@@ -343,10 +396,11 @@ docker compose up --build
 - выделение inference-сервиса в отдельный контейнер;
 - добавление CI/CD для сборки и валидации артефактов;
 - автоматизация external validation через DVC/MLflow;
-- версионирование моделей и датасетов.
+- версионирование моделей и датасетов;
+- расширение API-схем и роутеров в соответствии с новыми бизнес-требованиями.
 
 ---
 
 ## 13. Краткое резюме
 
-**Meditron 2026 Case 3** — это контейнеризованная система из frontend, FastAPI backend, ML-инференса, экспертного движка и SQLite-хранилища. Исследовательская часть построена на ноутбуках и артефактах `baselines` и `hierarchical`. Развёртывание выполняется через Docker Compose, что обеспечивает воспроизводимость и удобный запуск backend и frontend.
+**Meditron 2026 Case 3** — это контейнеризованная система из frontend, модульного FastAPI backend, ML-инференса, экспертного движка и SQLite-хранилища. Backend API разделён на слои: маршруты (`routes`), схемы (`schemas`), база данных (`database`), безопасность (`security`) и справочники (`resources`). Исследовательская часть построена на ноутбуках и артефактах `baselines` и `hierarchical`. Развёртывание выполняется через Docker Compose, что обеспечивает воспроизводимость и удобный запуск backend и frontend.
