@@ -1,0 +1,21 @@
+{
+  "name": "meditron-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node tests/api.test.mjs && node tests/ui-flow.test.mjs",
+    "format": "prettier --write src tests index.html vite.config.js"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.2",
+    "prettier": "^3.9.9",
+    "vite": "^8.3.2"
+  }
+}
