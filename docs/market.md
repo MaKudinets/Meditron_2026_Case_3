@@ -83,9 +83,12 @@ Meditron — это AI-система поддержки принятия вра
 
 | Показатель | Оценка |
 |------------|--------|
-| TAM (глобальный рынок AI в диагностике) | ~$5 млрд (2025), рост ~30% в год |
-| SAM (анемия и дефициты, цифровые решения) | ~$1.2 млрд |
-| SOM (доступно для Meditron в первые 3 года) | ~$50–100 млн |
+| TAM (глобальный рынок AI в диагностике) | ~313,1 млрд ₽/год
+<img width="254" height="58" alt="image" src="https://github.com/user-attachments/assets/5805290e-9143-4dce-b7e0-848f9bc3ee88" />|
+| SAM (анемия и дефициты, цифровые решения) | ~64,4 → 121 млрд ₽/год
+<img width="326" height="58" alt="image" src="https://github.com/user-attachments/assets/582d4851-3fd7-4e2e-9958-a7be5b5b5169" />|
+| SOM (доступно для Meditron в первые 3 года) | ~1,5–3,1 млрд ₽/год
+<img width="278" height="58" alt="image" src="https://github.com/user-attachments/assets/16f716e9-ca1a-4231-9f13-94fa18e08b5e" />|
 
 *Источники: Grand View Research, MarketsandMarkets, оценки на основе распространённости заболеваний.*
 
