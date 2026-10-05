@@ -61,16 +61,38 @@ Meditron — это система поддержки принятия врач�
 ## 4. Архитектура модели
 
 ### 4.1. Общая схема
-graph LR
-    P["Бинарные вероятности<br/>дефицитов"] --> R1{"Правило анемии?"}
-    R1 -->|да| A1["🩸 Анемия"]
-    R1 -->|нет| R2{"Пороги B12/фолат?"}
-    R2 -->|да| A2["🧬 B12 / фолатный дефицит"]
-    R2 -->|нет| A3["✅ Норма / другие"]
-    
-    A1 --> E["💬 Экспертный слой"]
-    A2 --> E
-    A3 --> E
+# 🧠 Архитектура ML-пайплайна **Meditron**
+
+> Многоуровневый ансамблевый пайплайн для прогнозирования дефицитов и сборки клинических классов
+
+---
+
+## 📊 Общая схема пайплайна
+
+```mermaid
+flowchart TD
+    A["📥 Входные данные<br/><b>37 признаков</b>"] --> B["⚙️ Предобработка<br/>импутация · масштабирование · one-hot"]
+
+    B --> C1["📈 L1 Logistic Regression<br/>(для каждого таргета)"]
+    B --> C2["🌲 CatBoost<br/>(для каждого таргета)"]
+
+    C1 --> D["🎯 Калибровка вероятностей<br/>Platt scaling"]
+    C2 --> D
+
+    D --> E["⚖️ Взвешенный ансамбль<br/>веса из training folds"]
+    E --> F["🔢 Бинарные вероятности дефицитов"]
+    F --> G["🧩 Иерархическая сборка классов<br/>правило анемии + пороги"]
+    G --> H["💬 Экспертный слой<br/>объяснения · конфликты · рекомендации"]
+
+    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style C1 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style C2 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    style D fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    style E fill:#e0f7fa,stroke:#0097a7,stroke-width:2px
+    style F fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    style G fill:#ede7f6,stroke:#5e35b1,stroke-width:2px
+    style H fill:#ffebee,stroke:#d32f2f,stroke-width:2px
 
 ### 4.2. Компоненты
 - **Предобработка:** `SimpleImputer(median)` + `StandardScaler` для числовых, `SimpleImputer(most_frequent)` + `OneHotEncoder` для категориальных.
