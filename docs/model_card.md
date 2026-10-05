@@ -61,32 +61,16 @@ Meditron — это система поддержки принятия врач�
 ## 4. Архитектура модели
 
 ### 4.1. Общая схема
-flowchart TD
-    A["📊 Входные данные<br/><b>37 признаков</b>"] --> B["⚙️ Предобработка<br/><i>импутация · масштабирование · one-hot</i>"]
+graph LR
+    P["Бинарные вероятности<br/>дефицитов"] --> R1{"Правило анемии?"}
+    R1 -->|да| A1["🩸 Анемия"]
+    R1 -->|нет| R2{"Пороги B12/фолат?"}
+    R2 -->|да| A2["🧬 B12 / фолатный дефицит"]
+    R2 -->|нет| A3["✅ Норма / другие"]
     
-    B --> C["📈 L1 Logistic Regression<br/><i>для каждого таргета</i>"]
-    B --> D["🌲 CatBoost<br/><i>для каждого таргета</i>"]
-    
-    C --> E["🎯 Калибровка вероятностей<br/><i>Platt scaling</i>"]
-    D --> E
-    
-    E --> F["⚖️ Взвешенный ансамбль<br/><i>веса из training folds</i>"]
-    
-    F --> G["📉 Бинарные вероятности дефицитов<br/><i>6 таргетов</i>"]
-    
-    G --> H["🏗️ Иерархическая сборка классов<br/><i>правило анемии + пороги</i>"]
-    
-    H --> I["🧠 Экспертный слой<br/><i>объяснения · конфликты · рекомендации</i>"]
-    
-    style A fill:#4A90D9,stroke:#2C5F8D,color:#fff
-    style B fill:#7B68EE,stroke:#4B3FAB,color:#fff
-    style C fill:#50C878,stroke:#2E8B57,color:#fff
-    style D fill:#FF8C42,stroke:#CC6B28,color:#fff
-    style E fill:#F4C430,stroke:#B89000,color:#000
-    style F fill:#E91E63,stroke:#A01350,color:#fff
-    style G fill:#9C27B0,stroke:#6A1B7A,color:#fff
-    style H fill:#00BCD4,stroke:#00838F,color:#fff
-    style I fill:#FF5722,stroke:#B93E18,color:#fff
+    A1 --> E["💬 Экспертный слой"]
+    A2 --> E
+    A3 --> E
 
 ### 4.2. Компоненты
 - **Предобработка:** `SimpleImputer(median)` + `StandardScaler` для числовых, `SimpleImputer(most_frequent)` + `OneHotEncoder` для категориальных.
