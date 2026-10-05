@@ -93,7 +93,7 @@ flowchart TD
     style F fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
     style G fill:#ede7f6,stroke:#5e35b1,stroke-width:2px
     style H fill:#ffebee,stroke:#d32f2f,stroke-width:2px
-
+```
 ### 4.2. Компоненты
 - **Предобработка:** `SimpleImputer(median)` + `StandardScaler` для числовых, `SimpleImputer(most_frequent)` + `OneHotEncoder` для категориальных.
 - **Бинарные модели:** для каждого из 6 таргетов обучаются отдельно L1-логистическая регрессия (с балансировкой классов) и CatBoost (фиксированные гиперпараметры).
